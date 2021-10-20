@@ -4,7 +4,7 @@
  * @Author: Mockingbird
  * @Date:   2021-10-20 15:03:28
  * @Last Modified by:   root
- * @Last Modified time: 2021-10-20 15:30:15
+ * @Last Modified time: 2021-10-20 16:35:30
  */
 
 class App{
@@ -13,7 +13,7 @@ class App{
 
     static function getDatabase(){
         if(!self::$db){
-            self::$db = new Database('root', '');
+            self::$db = new Database('root', '', 'YnovHtb');
         }
         return self::$db;
     }

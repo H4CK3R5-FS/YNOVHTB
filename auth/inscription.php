@@ -4,11 +4,20 @@
  * @Author: root
  * @Date:   2021-10-20 14:50:07
  * @Last Modified by:   root
- * @Last Modified time: 2021-10-20 15:55:36
+ * @Last Modified time: 2021-10-20 16:38:05
  */
 
-	require_once '../inc/bootstrap.php';
-	require_once '../inc/header.php';
+	require_once '../inc/bootstrap_auth.php';
+
+	$errors = [];
+
+	$validator = new Validator($_POST);
+    $auth = App::getAuth();
+    $db = App::getDatabase();
+    $auth->connectFromCookie($db);
+	
+
+	require_once "../inc/components/header.php";
 ?>
 	
 	<div class="container">
@@ -40,11 +49,11 @@
 				</div>
 				
 				<div class="form-group">
-					<a href="auth/">I already have an account.</a>
+					<a href="../auth/index.php">I already have an account.</a>
 				</div>
 
 			</form>
 		</div>
 	</div>
 
-<?php require_once '../inc/footer.php'; ?>
+<?php require_once '../inc/components/footer.php'; ?>
