@@ -4,10 +4,10 @@
  * @Author: root
  * @Date:   2021-10-20 14:50:07
  * @Last Modified by:   root
- * @Last Modified time: 2021-10-20 15:55:27
+ * @Last Modified time: 2021-10-20 16:37:54
  */
     require_once "../inc/bootstrap.php";
-    require_once "../inc/header.php";
+    require_once "../inc/components/header.php";
 ?>
 
     <div class="container">
@@ -30,7 +30,7 @@
                </div>
 
                <div class="form-group">
-                   <a href="auth/inscription.php">I don't have an account.</a>
+                   <a href="inscription.php">I don't have an account.</a>
                </div>
                
             </form>
@@ -38,4 +38,4 @@
     </div>
 
 
-<?php require_once "../inc/footer.php"; ?>
+<?php require_once "../inc/components/footer.php"; ?>
