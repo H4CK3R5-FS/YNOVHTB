@@ -4,7 +4,7 @@
  * @Author: root
  * @Date:   2021-10-20 14:50:07
  * @Last Modified by:   root
- * @Last Modified time: 2021-10-20 16:38:05
+ * @Last Modified time: 2021-10-20 16:49:27
  */
 
 	require_once '../inc/bootstrap_auth.php';
@@ -16,6 +16,11 @@
     $db = App::getDatabase();
     $auth->connectFromCookie($db);
 	
+    if($_POST):
+    	
+    else:
+    	$errors = $validator->getErrors();
+    endif;
 
 	require_once "../inc/components/header.php";
 ?>
