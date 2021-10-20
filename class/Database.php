@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * @Author: root
+ * @Date:   2021-10-20 15:03:28
+ * @Last Modified by:   root
+ * @Last Modified time: 2021-10-20 15:05:29
+ */
+
 class Database{
     private $pdo;
     public function __construct($login, $password, $database_name, $host = '127.0.0.1'){
