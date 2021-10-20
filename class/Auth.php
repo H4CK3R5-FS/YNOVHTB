@@ -43,60 +43,41 @@ class Auth{
 		return $ipaddress;
 	}
 
-	public function currentMonth($month){
-		switch( $month ){
-	        case 1 : $m = 'january';break;
-	        case 2 : $m = 'february';break;
-	        case 3 : $m = 'march';break;
-	        case 4 : $m = 'april';break;
-	        case 5 : $m = 'may';break;
-	        case 6 : $m = 'june';break;
-	        case 7 : $m = 'july';break;
-	        case 8 : $m = 'august';break;
-	        case 9 : $m = 'september';break;
-	        case 10: $m = 'october';break;
-	        case 11: $m = 'november';break;
-	        case 12: $m = 'december';break;
-	        return $m;
-	    }
+	// ###############################################################
+	// 
+	//                  Generique Methodes
+	// 
+	// ###############################################################
+
+	public function isIndexHere($db, $table, $attributes, $values){
+		$res = $db->query("SELECT id FROM $table WHERE $attributes", $values)->fetch();
+		return ($res)? true : false ;  
 	}
 
-	public function isUniq($db, $table, $field, $value){
-		$res = $db->query("SELECT id FROM $table WHERE $field=?",[$value])->fetch();
-		return (!$res)? true : false ;
+	public function getAllIndex($db, $table, $attributes='', $values, $getValue='*', $limit=''){
+		return $db->query("SELECT $getValue FROM $table ".((!empty($attributes))? "WHERE $attributes" : '')." $limit", $values)->fetchAll();
 	}
 
-	public function getAllCats($db){
-		return $db->query("SELECT * FROM categories WHERE status=?", [1])->fetchAll();
+	public function getThis($db, $table, $attributes, $values, $getValue="*"){
+		return $db->query("SELECT $getValue FROM $table WHERE $attributes", $values)->fetch();
 	}
 
-	public function addTags($db, $tag){
-		return $db->query("INSERT INTO categories SET titre=?, token=?, status=?, dateAjout=NOW()", [$tag, Str::rando(50), 1]);
+	public function deleteIndex($db, $table, $attributes, $values){
+		$db->query("DELETE FROM $table WHERE $attributes", $values);
 	}
 
-	public function addTopic($db, $titre, $spot, $cat, $message){
-		return $db->query("INSERT INTO topics SET titre=?, spot=?, tokenCat=?, message=?, tokenTopic=?, day=?, month=?", 
-			[$titre, $spot, $cat, $message, Str::random(50), date('j'), $this->currentMonth(date('m'))] 
-		);
+	public function addIndex($db, $table, $attributes, $values){
+		return $db->query("INSERT INTO $table SET $attributes", $values);
 	}
 
-	public function getAllTopics($db, $limit=""){
-		return $db->query("SELECT * FROM topics $limit")->fetchAll();
+	public function editIndex($db, $table, $attributes, $attributes2, $values){
+		return $db->query("UPDATE $table SET $attributes WHERE $attributes2", $values);
 	}
 
-	public function addSpot($db, $titre, $link, $message){
-		return $db->query("INSERT INTO spot SET name=?, link=?, message=?, token=?, dateAjout=NOW()", [$titre, $link, $message, Str::random(50)]);
+	public function getCount($db, $table, $field, $value){
+		return $db->query("SELECT count(id) as nb FROM $table WHERE $field", $value)->fetch();
 	}
-
-	public function getAllSpots($db, $limit=""){
-		return $db->query("SELECT * FROM spot $limit")->fetchAll();
-	}
-
-
-	public function contact($db, $name, $email, $message){
-		return $db->query("INSERT INTO contact SET name=?, email=?, message=?, dateEnvoie= NOW()", [$name, $email, $message]);
-	}
-
+	
 	public function register($db, $nom, $email, $password){
 		$password = $this->hashPassword($password);
 		$db->query("INSERT INTO users SET pseudo=?, email=?, pass=?, token=?, dateAjout=NOW()",[$nom, $email, $password, Str::random(50)]
