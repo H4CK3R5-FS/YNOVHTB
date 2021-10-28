@@ -4,7 +4,7 @@
  * @Author: Mockingbird
  * @Date:   2021-10-20 15:03:28
  * @Last Modified by:   root
- * @Last Modified time: 2021-10-20 15:30:06
+ * @Last Modified time: 2021-10-28 23:50:42
  */
 
 class Auth{
@@ -53,7 +53,7 @@ class Auth{
 
 	// ###############################################################
 	// 
-	//                  Generique Methodes
+	//                        Generique Methodes
 	// 
 	// ###############################################################
 
@@ -85,11 +85,21 @@ class Auth{
 	public function getCount($db, $table, $field, $value){
 		return $db->query("SELECT count(id) as nb FROM $table WHERE $field", $value)->fetch();
 	}
+
+	// ###############################################################
+	// 
+	//                    Fin Generique Methodes
+	// 
+	// ###############################################################
 	
-	public function register($db, $nom, $email, $password){
+	public function register($db, $pseudo, $email, $password){
 		$password = $this->hashPassword($password);
-		$db->query("INSERT INTO users SET pseudo=?, email=?, pass=?, token=?, dateAjout=NOW()",[$nom, $email, $password, Str::random(50)]
+		$token = Str::random(250);
+		$db->query("INSERT INTO users SET pseudo=?, mail=?, password=?, token=?, level=?, confirmation_token = ?", 
+			[$pseudo, $email, $password, Str::random(50), 'member', $token]
 		);
+		$user_id = $db->lastInsertId();
+		// Email::email($email, "Confirmation de votre compte", "Afin de valider votre compte merci de cliquer sur ce lien\n\nhttp://localhost/sierra/Confirmation.php?id=$user_id&token=$token");
 	}
 
 	public function confirm($db, $user_id, $token){
@@ -103,7 +113,7 @@ class Auth{
 	}
 
 	public function restrict(){
-		if(!$this->session->read('auth')){
+		if(!$this->session->read('authentification')){
 			$this->session->setFlash('danger', $this->options['restriction_msg']);
 			header('Location: login.php');
 			exit();
@@ -111,10 +121,10 @@ class Auth{
 	}
 
 	public function user(){
-		if(!$this->session->read('auth')){
+		if(!$this->session->read('authentification')){
 			return false;
 		}
-		return $this->session->read('auth');
+		return $this->session->read('authentification');
 	}
 
 	public function connect($user){
@@ -129,7 +139,7 @@ class Auth{
 			$user_id = $parts[0];
 			$user = $db->query('SELECT * FROM users WHERE id = ?', [$user_id])->fetch();
 			if($user){
-				$expected = $user_id . '==' . $user->remember_token . sha1($user_id . 'Mockingbird050');
+				$expected = $user_id . '==' . $user->remember_token . sha1($user_id . 'YnovHtb2021');
 				if($expected == $remember_token){
 					$this->connect($user);
 					setcookie('remember', $remember_token, time() + 60 * 60 * 24 * 7);
@@ -143,7 +153,7 @@ class Auth{
 	}
 
 	public function login($db, $pseudo, $password){
-		$user = $db->query('SELECT * FROM users WHERE (pseudo = :pseudo)', ['pseudo' => $pseudo])->fetch();
+		$user = $db->query('SELECT * FROM users WHERE (pseudo = :pseudo) or (mail = :mail)', ['pseudo' => $pseudo, 'mail' => $pseudo])->fetch();
 		if($user){
 			if(password_verify($password, $user->pass)){
 				$this->connect($user);
@@ -159,13 +169,13 @@ class Auth{
 	public function remember($db, $user_id){
 		$remember_token = Str::random(250);
 		$db->query('UPDATE users SET remember_token = ? WHERE id = ?', [$remember_token, $user_id]);
-		setcookie('remember', $user_id . '==' . $remember_token . sha1($user_id . 'Mockingbird050'), 0);
+		setcookie('remember', $user_id . '==' . $remember_token . sha1($user_id . 'YnovHtb2021'), 0);
 
 	}
 
 	public function logout(){
 		setcookie('remember', NULL, -1);
-		$this->session->delete('auth');
+		$this->session->delete('authentification');
 	}
 
 	public function changePassword($db, $email, $password){

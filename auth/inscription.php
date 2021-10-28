@@ -4,10 +4,10 @@
  * @Author: root
  * @Date:   2021-10-20 14:50:07
  * @Last Modified by:   root
- * @Last Modified time: 2021-10-20 16:49:27
+ * @Last Modified time: 2021-10-28 23:44:16
  */
 
-	require_once '../inc/bootstrap_auth.php';
+	require_once "../inc/bootstrap_auth.php";
 
 	$errors = [];
 
@@ -16,10 +16,24 @@
     $db = App::getDatabase();
     $auth->connectFromCookie($db);
 	
-    if($_POST):
-    	
-    else:
-    	$errors = $validator->getErrors();
+    if($auth->user()): App::redirect('index.php'); endif;
+
+    if(!empty($_POST) && !empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['pass'])):
+
+        $validator->isAlpha('pseudo', "invalid pseudo field !");
+    	if($validator->isValid()){$validator->isUniq("pseudo", $db, "users", "Pseudo already in use !", true);}
+
+        $validator->isEmail('email', "invalid email field !");
+        if($validator->isValid()){$validator->isUniq("email", $db, "users", "Email already in use !", true);}
+
+        $validator->isConfirmed("pass", "invalid password !");
+
+        if($validator->isValid()):
+            $auth->register($db, strtolower($_POST['pseudo']), strtolower($_POST['email']), htmlspecialchars($_POST['pass']));
+            App::redirect('index.php');
+        else:
+         	$errors = $validator->getErrors();
+        endif;
     endif;
 
 	require_once "../inc/components/header.php";
@@ -27,8 +41,11 @@
 	
 	<div class="container">
 		<div class="forms">
-			<form methode="POST">
-				<h1>Regsiter</h1>
+
+			<form method="POST">
+
+				<h1>Regsiter Y-HTB</h1>
+				
 				<div class="form-group">
 					<label for="pseudo">Pseudo</label>
 					<input id="pseudo" type="text" name="pseudo" placeholder="*Pseudo"/>
@@ -41,23 +58,24 @@
 
 				<div class="form-group">
 					<label for="pseudo">password</label>
-					<input id="password" type="text" name="password" placeholder="*Password"/>
+					<input id="password" type="password" name="pass" placeholder="*Password"/>
 				</div>
 
 				<div class="form-group">
 					<label for="pseudo">confirm your password</label>
-					<input id="confirm your password" type="text" name="password_confirm" placeholder="*Confirm your password"/>
+					<input id="confirm your password" type="password" name="pass_confirm" placeholder="*Confirm your password"/>
 				</div>
 
 				<div class="form-group">
-					<button type="button">Register Now</button>
+					<button type="submit">Register Now</button>
 				</div>
 				
 				<div class="form-group">
-					<a href="../auth/index.php">I already have an account.</a>
+					<a href="../auth/">I already have an account.</a>
 				</div>
-
+				
 			</form>
+
 		</div>
 	</div>
 

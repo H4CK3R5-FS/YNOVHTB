@@ -4,7 +4,7 @@
  * @Author: Mockingbird
  * @Date:   2021-10-20 15:03:28
  * @Last Modified by:   root
- * @Last Modified time: 2021-10-20 15:30:35
+ * @Last Modified time: 2021-10-28 23:22:48
  */
 
 class Validator{
@@ -51,9 +51,9 @@ class Validator{
         return true;
     } 
 
-    public function isUniq($field, $db, $table, $errorMsg)
+    public function isUniq($field, $db, $table, $errorMsg, $toLower = false)
     {
-        $record = $db->query("SELECT id FROM $table WHERE $field = ?", [$this->getField($field)])->fetch();
+        $record = $db->query("SELECT id FROM $table WHERE $field = ?", [($toLower)? strtolower($this->getField($field)): $this->getField($field)])->fetch();
         if ($record) {
             $this->errors[$field] = $errorMsg;
             return false;

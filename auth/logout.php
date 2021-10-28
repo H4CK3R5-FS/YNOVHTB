@@ -4,7 +4,7 @@
  * @Author: root
  * @Date:   2021-10-20 16:44:31
  * @Last Modified by:   root
- * @Last Modified time: 2021-10-20 16:46:48
+ * @Last Modified time: 2021-10-28 23:18:49
  */
 
     require_once 'inc/bootstrap.php';
@@ -15,5 +15,5 @@
 
     App::getAuth()->logout();
     // pop-up !
-    // Session::getInstance()->setFlash('success', 'Vous êtes maintenant déconnecté');
+    Session::getInstance()->setFlash('success', 'Vous êtes maintenant déconnecté');
     App::redirect('../index.php');
