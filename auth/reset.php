@@ -3,38 +3,41 @@
 /**
  * @Author: root
  * @Date:   2021-11-10 15:38:21
- * @Last Modified by:   root
- * @Last Modified time: 2021-11-10 15:46:08
+ * @Last Modified by:   yacine.B
+ * @Last Modified time: 2021-11-10 16:50:42
  */
 
 require_once "../inc/bootstrap_auth.php";
 require_once '../inc/components/header.php';
 
+$validator = new Validator($_POST);
 $auth = App::getAuth();
 $db = App::getDatabase();
 $auth->connectFromCookie($db);
 
 if($auth->user()): App::redirect('../profil/account.php'); endif;
 
-if(!empty($_GET) && !empty($_GET['id']) && !empty($_GET['token'])){
+if(!empty($_GET) && !empty($_GET['id']) && !empty($_GET['token'])):
 	$user = $auth->checkResetToken($db, $_GET['id'], $_GET['token']);
-	if($user){
+	$session = Session::getInstance();
+	if($user):
 
 		if(!empty($_POST) && !empty($_POST['password'])):
-			$validator->isConfirmed('password',"Vos mots de passes ne correspondent pas !");
+			$validator->isConfirmed('password',"Your passwords don't match !");
 			
 			if($validator->isValid()):
 				$db->query('UPDATE users SET password = ?, reset_at = NULL, reset_token = NULL WHERE id = ?', 
 					[$auth->hashPassword($_POST['password']), $_GET['id']]);
 				$auth->connect($user);
-				Session::getInstance()->setFlash('success','Votre mot de passe à bien été modifié');
+
+				$session->setFlash('success','Your password has been changed successfuly');
 				App::redirect('../profil/account.php');
 			else:
 				$errors = $validator->getErrors();
 			endif;
 		endif;
 	else:
-		Session::getInstance()->setFlash('danger',"Ce token n'est pas valide");
+		$session->setFlash('danger',"This token is not valid");
 		App::redirect('../index.php');
 	endif;
 else:
@@ -44,7 +47,7 @@ endif;
 ?>
 	<div class="container">
 		<div class="forms">
-			<form methode="POST">
+			<form method="POST">
 			
 				<h1>Reset Password</h1>
 
@@ -71,7 +74,7 @@ endif;
 				</div>
             
                 <div class="form-group">
-					<button type="button">Envoyé </button>
+					<button type="submit">Envoyé </button>
 				</div>
 
 			</form>

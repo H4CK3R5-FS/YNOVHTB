@@ -3,8 +3,8 @@
 /**
  * @Author: Mockingbird
  * @Date:   2021-10-20 15:03:28
- * @Last Modified by:   root
- * @Last Modified time: 2021-11-10 15:38:06
+ * @Last Modified by:   yacine.B
+ * @Last Modified time: 2021-11-10 16:49:35
  */
 
 class Auth{
@@ -27,7 +27,7 @@ class Auth{
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	private function hashPassword($password){
+	public function hashPassword($password){
 		return password_hash($password, PASSWORD_BCRYPT);
 	}
 
@@ -182,4 +182,17 @@ class Auth{
 		return ($res)? true : false;
 	}
 
+	public function resetPassword($db, $email){
+		$reset_token = Str::random(60);
+		$user = $db->query('SELECT * FROM users WHERE email = ? AND confirmation_at IS NOT NULL', [$email])->fetch();
+		if($user){
+			$db->query('UPDATE users SET reset_token = ?, reset_at = NOW() WHERE id = ?', [$reset_token, $user->id]);
+			return $user;
+		}
+		return false;
+	}
+
+	public function checkResetToken($db, $user_id, $token){
+		return $db->query('SELECT * FROM users WHERE id = ? AND reset_token IS NOT NULL AND reset_token = ? AND reset_at > DATE_SUB(NOW(), INTERVAL 30 MINUTE)', [$user_id, $token])->fetch();
+	}
 }

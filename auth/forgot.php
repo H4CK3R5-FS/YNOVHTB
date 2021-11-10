@@ -3,24 +3,25 @@
 /**
  * @Author: root
  * @Date:   2021-11-10 14:12:27
- * @Last Modified by:   root
- * @Last Modified time: 2021-11-10 15:46:14
+ * @Last Modified by:   yacine.B
+ * @Last Modified time: 2021-11-10 16:36:36
  */
 
 require_once "../inc/bootstrap_auth.php";
 require '../inc/components/header.php';
 
+$validator = new Validator($_POST);
 $auth = App::getAuth();
 $db = App::getDatabase();
 $auth->connectFromCookie($db);
 
 if($auth->user()): App::redirect('../profil/account.php'); endif;
 
-if(!empty($_POST) and !empty($_POST['email'])):
-	$validator->isEmail('email', 'E-mail field not valid !');
+if(!empty($_POST) && !empty($_POST['email']) && !empty($_POST['reset'])):
+	$validator->isEmail('email', "Invalid E-mail field !");
 	if($validator->isValid()):
-		$auth->resetPassword($db, $_POST['login_mail']));
-		Session::getInstance()->setFlash('success', 'An email has been sent to you.');
+		$auth->resetPassword($db, strtolower(htmlspecialchars($_POST['email'])));
+		Session::getInstance()->setFlash('success', 'An E-mail had been sent to you.');
 	else:
 		$errors = $validator->getErrors();
 	endif;
@@ -30,7 +31,7 @@ endif;
 
 	<div class="container">
 		<div class="forms">
-			<form methode="POST">
+			<form method="POST">
 				<h1>Forgot your password</h1>
 
 				<?php require '../inc/components/head.php'; ?>
@@ -51,7 +52,7 @@ endif;
 				</div>
 
 				<div class="form-group">
-					<button type="submit">Send </button>
+					<button type="submit" value="reset">Reset </button>
 				</div>
 
 			</form>
