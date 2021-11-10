@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mer. 10 nov. 2021 à 16:07
+-- Généré le : mer. 10 nov. 2021 à 17:01
 -- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 7.3.31
 
@@ -34,9 +34,9 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `token` varchar(50) NOT NULL,
   `level` enum('member','admin') NOT NULL DEFAULT 'member',
-  `confirmation_token` varchar(250) DEFAULT NULL,
   `remember_token` varchar(250) DEFAULT NULL,
-  `confirmed_at` datetime DEFAULT NULL,
+  `confirmation_token` varchar(250) DEFAULT NULL,
+  `confirmation_at` datetime DEFAULT NULL,
   `reset_token` varchar(250) DEFAULT NULL,
   `reset_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='table lié aux utilisateurs';
@@ -45,8 +45,8 @@ CREATE TABLE `users` (
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `pseudo`, `email`, `password`, `token`, `level`, `confirmation_token`, `remember_token`, `confirmed_at`, `reset_token`, `reset_at`) VALUES
-(1, 'root', 'root@ynovhtb.com', '$2y$10$QB28T/ot3oSrAt/iyAzEnOYMcY6K8nuytKR96q0gnXSSYJndy5R7y', 'dITdsINuJ1gHzNFwB4uRMG761KKVbOdxAXK0fWmvx94SVe2e8E', 'member', NULL, 'w0lhn65OHBXhUOZKu9npthE58kdxfF2xmhQcH0m9ISxroOeGCEV0XZmAS3qp8xILsKWMQ0EUthtLb7NLmdhWxqm4lcJ9hf70CvMcFrutNM3gV7XDrKi1OxndajKOxzbzCglIn99SbksQvh15Njzf7NwRt9ukUQtYhpuj7FqifCB4bh0AbWO02n5z7TSby836libhmJAfdhckByEID7971J8AQ2hQ7MIVcWHEHHQBFJwxE1Wog86kpWcyXO', NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `pseudo`, `email`, `password`, `token`, `level`, `remember_token`, `confirmation_token`, `confirmation_at`, `reset_token`, `reset_at`) VALUES
+(1, 'root', 'root@ynovhtb.com', '$2y$10$5C3xzyb7Gom5h9K8V7o5PuMUqUasdfha//ulwPWwgJZ8s/XOtB10m', 'dITdsINuJ1gHzNFwB4uRMG761KKVbOdxAXK0fWmvx94SVe2e8E', 'member', 'w0lhn65OHBXhUOZKu9npthE58kdxfF2xmhQcH0m9ISxroOeGCEV0XZmAS3qp8xILsKWMQ0EUthtLb7NLmdhWxqm4lcJ9hf70CvMcFrutNM3gV7XDrKi1OxndajKOxzbzCglIn99SbksQvh15Njzf7NwRt9ukUQtYhpuj7FqifCB4bh0AbWO02n5z7TSby836libhmJAfdhckByEID7971J8AQ2hQ7MIVcWHEHHQBFJwxE1Wog86kpWcyXO', NULL, '2021-11-10 16:21:22', NULL, NULL);
 
 --
 -- Index pour les tables déchargées
