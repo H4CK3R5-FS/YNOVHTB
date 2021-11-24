@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @Author: root
- * @Date:   2021-11-10 10:30:04
+ * @Author: yacine.B
+ * @Date:   2021-11-10 16:03:48
  * @Last Modified by:   yacine.B
- * @Last Modified time: 2021-11-10 16:09:55
+ * @Last Modified time: 2021-11-10 16:14:52
  */
 
 require_once '../inc/bootstrap_auth.php';
@@ -23,7 +23,12 @@ if(!(App::getAuth()->user())):
     App::redirect('../index.php');
 endif;
 
-echo $auth->user()->pseudo.'</br>';
 ?>
 
-<a href="../auth/logout.php">LOGOUT !</a>
+
+<!-- Html ICI !!! -->
+
+
+
+
+<?php require_once '../inc/components/header.php'; ?>
