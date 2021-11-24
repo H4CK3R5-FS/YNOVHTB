@@ -16,6 +16,9 @@
 	<title>Conditions Générales D'utilisation</title>
 </head>
 <body>
+	<h1>Conditions Générales D'utilisation</h1><br>
+	<p>L'utilisation du site web Ynov HTB quelque soit le moyen d'accés employé, indique que vous acceptez les conditions générales d'utilisation. Les conditions Générales d'utilisation définissent vos droits et obligations dans le cadre de la loi. Si vous n'acceptez pas certaines ou toutes ces conditions alors n'utilisez pas le service et n'y accédez pas.</p><br>
+	
 	
 </body>
 </html>
