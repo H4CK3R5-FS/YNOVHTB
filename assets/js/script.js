@@ -1,28 +1,19 @@
-const canvas = document.getElementById('canv');
-const ctx = canvas.getContext('2d');
+(function() {
+  // Add event listener
+  document.addEventListener("mousemove", parallax);
+  const elem = document.querySelector("#parallax");
+  // Magic happens here
+  function parallax(e) {
+      let _w = window.innerWidth/2;
+      let _h = window.innerHeight/2;
+      let _mouseX = e.clientX;
+      let _mouseY = e.clientY;
+      let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+      let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+      let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+      let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+      console.log(x);
+      elem.style.backgroundPosition = x;
+  }
 
-const w = canvas.width = document.body.offsetWidth;
-const h = canvas.height = document.body.offsetHeight;
-const cols = Math.floor(w / 20) + 1;
-const ypos = Array(cols).fill(0);
-
-ctx.fillStyle = '#000';
-ctx.fillRect(0, 0, w, h);
-
-function matrix () {
-  ctx.fillStyle = '#0001';
-  ctx.fillRect(0, 0, w, h);
-  
-  ctx.fillStyle = '#0f0';
-  ctx.font = '15pt monospace';
-  
-  ypos.forEach((y, ind) => {
-    const text = String.fromCharCode(Math.random() * 128);
-    const x = ind * 20;
-    ctx.fillText(text, x, y);
-    if (y > 100 + Math.random() * 10000) ypos[ind] = 0;
-    else ypos[ind] = y + 20;
-  });
-}
-
-setInterval(matrix, 50);
+})();
