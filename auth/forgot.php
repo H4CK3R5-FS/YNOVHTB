@@ -4,7 +4,7 @@
  * @Author: root
  * @Date:   2021-11-10 14:12:27
  * @Last Modified by:   yacine.B
- * @Last Modified time: 2021-11-10 16:36:36
+ * @Last Modified time: 2022-01-19 09:46:52
  */
 
 require_once "../inc/bootstrap_auth.php";
@@ -15,7 +15,7 @@ $auth = App::getAuth();
 $db = App::getDatabase();
 $auth->connectFromCookie($db);
 
-if($auth->user()): App::redirect('../profil/account.php'); endif;
+if($auth->user()): App::redirect('profil/account.php'); endif;
 
 if(!empty($_POST) && !empty($_POST['email']) && !empty($_POST['reset'])):
 	$validator->isEmail('email', "Invalid E-mail field !");

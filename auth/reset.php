@@ -4,7 +4,7 @@
  * @Author: root
  * @Date:   2021-11-10 15:38:21
  * @Last Modified by:   yacine.B
- * @Last Modified time: 2021-11-10 16:50:42
+ * @Last Modified time: 2022-01-19 09:46:40
  */
 
 require_once "../inc/bootstrap_auth.php";
@@ -15,7 +15,7 @@ $auth = App::getAuth();
 $db = App::getDatabase();
 $auth->connectFromCookie($db);
 
-if($auth->user()): App::redirect('../profil/account.php'); endif;
+if($auth->user()): App::redirect('profil/account.php'); endif;
 
 if(!empty($_GET) && !empty($_GET['id']) && !empty($_GET['token'])):
 	$user = $auth->checkResetToken($db, $_GET['id'], $_GET['token']);
@@ -31,7 +31,7 @@ if(!empty($_GET) && !empty($_GET['id']) && !empty($_GET['token'])):
 				$auth->connect($user);
 
 				$session->setFlash('success','Your password has been changed successfuly');
-				App::redirect('../profil/account.php');
+				App::redirect('prl/account.php');
 			else:
 				$errors = $validator->getErrors();
 			endif;

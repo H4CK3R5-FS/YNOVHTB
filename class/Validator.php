@@ -3,8 +3,8 @@
 /**
  * @Author: Mockingbird
  * @Date:   2021-10-20 15:03:28
- * @Last Modified by:   root
- * @Last Modified time: 2021-11-10 14:18:21
+ * @Last Modified by:   yacine.B
+ * @Last Modified time: 2021-11-24 13:49:59
  */
 
 class Validator{
@@ -49,7 +49,7 @@ class Validator{
 
     public function isAlpha($field, $errorMsg)
     {
-        if (!preg_match('/^[a-zA-Z0-9_\]+$/', $this->getField($field))) {
+        if (!preg_match('/^[a-zA-Z0-9_\ ]+$/', $this->getField($field))) {
             $this->errors[$field] = $errorMsg;
             return false;
         }
@@ -98,11 +98,11 @@ class Validator{
     public function isSized($field, $minSize, $maxSize)
     {
         if(!(strlen(trim($this->getField($field))) >= $minSize)){
-            $this->errors[$field] = "Le champs est trop court !";
+            $this->errors[$field] = $field." is too short !";
             return false;
         }   
         if(!(strlen(trim($this->getField($field))) <= $maxSize)){
-            $this->errors[$field] = "Le champs est trop long veuillez le réduire !";
+            $this->errors[$field] = $field." is too long !";
             return false;
         }   
         return true;

@@ -3,8 +3,8 @@
 /**
  * @Author: Mockingbird
  * @Date:   2021-10-20 15:03:28
- * @Last Modified by:   root
- * @Last Modified time: 2021-10-20 16:35:30
+ * @Last Modified by:   yacine.B
+ * @Last Modified time: 2021-11-24 11:08:40
  */
 
 class App{
@@ -20,6 +20,10 @@ class App{
 
     static function getAuth(){
         return new Auth(Session::getInstance(), ['restriction_msg' => 'Lol tu es bloqué !']);
+    }
+
+    static function getAuthRequest(){
+        return new Request(Session::getInstance(), ['restriction_msg' => 'Lol tu es bloqué !']);
     }
 
     static function redirect($page){

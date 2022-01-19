@@ -3,8 +3,8 @@
 /**
  * @Author: root
  * @Date:   2021-10-20 14:50:07
- * @Last Modified by:   root
- * @Last Modified time: 2021-11-10 15:56:43
+ * @Last Modified by:   yacine.B
+ * @Last Modified time: 2022-01-19 09:45:50
  */
 
     require_once "../inc/bootstrap_auth.php";
@@ -17,7 +17,7 @@
     $db = App::getDatabase();
     $auth->connectFromCookie($db);
     
-    if($auth->user()): App::redirect('../profil/account.php'); endif;
+    if($auth->user()): App::redirect('profil/account.php'); endif;
 
     if(!empty($_POST) && !empty($_POST['pseudoMail']) && !empty($_POST['pass'])):
 
@@ -31,7 +31,7 @@
                 htmlspecialchars($_POST['pass']), 
                 htmlspecialchars($validator->checked('remember', 'remember')))):
 
-                App::redirect('../profil/account.php');
+                App::redirect('profil/account.php');
             else: 
                 Session::getInstance()->setFlash('danger', 'Identifiant ou mot de passe incorrecte'); 
             endif;
