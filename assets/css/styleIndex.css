@@ -22,8 +22,8 @@ body {
   height: 50%;
   width: 30%;
 
-  -webkit-animation: 4s linear 0s infinite  move_eye;
-          animation: 4s linear 0s infinite  move_eye;
+  -webkit-animation: 3s linear 0s infinite  move_eye;
+          animation: 3s linear 0s infinite  move_eye;
 }
 
 @-webkit-keyframes move_eye { from { margin-left:-20%; } to { margin-left:100%; }  }
