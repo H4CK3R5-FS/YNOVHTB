@@ -4,7 +4,7 @@
  * @Author: Mockingbird
  * @Date:   2021-10-20 15:03:28
  * @Last Modified by:   root
- * @Last Modified time: 2021-10-20 15:30:23
+ * @Last Modified time: 2021-11-10 14:38:57
  */
 
 class Database{
@@ -29,10 +29,6 @@ class Database{
             $req = $this->pdo->query($query);
         }
         return $req;
-    }
-
-    public function lastInsertId(){
-        return $this->pdo->lastInsertId();
     }
 
 }

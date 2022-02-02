@@ -4,7 +4,7 @@
  * @Author: Mockingbird
  * @Date:   2021-10-20 15:03:28
  * @Last Modified by:   root
- * @Last Modified time: 2021-10-28 23:22:48
+ * @Last Modified time: 2021-11-10 14:18:21
  */
 
 class Validator{
@@ -25,17 +25,31 @@ class Validator{
         return $this->data[$field];
     }
 
-    public function isEqual($field, $field1){
-        if(password_verify($field, $field1)){
-            return true;
-        }
+    public function isEqual($field, $field1)
+    {
+        if(password_verify($field, $field1)): return true; endif;
         $this->errors[$field] = 'Votre ancient mot de passe n\'est pas valide!';
         return false ;
     }
 
+    public function checked($field, $value)
+    {
+        return ($this->getField($field) == $value)? true : false ;
+    }
+
+    public function isAlphaOrEmail($field, $errorMsg)
+    {
+        if (!filter_var($this->getField($field), FILTER_VALIDATE_EMAIL) and !preg_match('/^[a-zA-Z0-9_\s]+$/', $this->getField($field))) 
+        {
+            $this->errors[$field] = $errorMsg;
+            return false;
+        }
+        return true;
+    }
+
     public function isAlpha($field, $errorMsg)
     {
-        if (!preg_match('/^[a-zA-Z0-9_\,]+$/', $this->getField($field))) {
+        if (!preg_match('/^[a-zA-Z0-9_\]+$/', $this->getField($field))) {
             $this->errors[$field] = $errorMsg;
             return false;
         }
@@ -104,6 +118,7 @@ class Validator{
         return true;
     }
 
+    //  TO-DO !!!
     public function isChecked($field, $errorMsg){
         if(null != $this->getField($field) and $this->getField($field) === 'condition--OK'){
             return true;

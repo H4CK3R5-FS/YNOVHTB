@@ -3,8 +3,8 @@
 /**
  * @Author: Mockingbird
  * @Date:   2021-10-20 15:03:28
- * @Last Modified by:   root
- * @Last Modified time: 2021-10-28 23:50:42
+ * @Last Modified by:   yacine.B
+ * @Last Modified time: 2021-11-10 16:49:35
  */
 
 class Auth{
@@ -27,7 +27,7 @@ class Auth{
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	private function hashPassword($password){
+	public function hashPassword($password){
 		return password_hash($password, PASSWORD_BCRYPT);
 	}
 
@@ -94,12 +94,11 @@ class Auth{
 	
 	public function register($db, $pseudo, $email, $password){
 		$password = $this->hashPassword($password);
-		$token = Str::random(250);
-		$db->query("INSERT INTO users SET pseudo=?, mail=?, password=?, token=?, level=?, confirmation_token = ?", 
-			[$pseudo, $email, $password, Str::random(50), 'member', $token]
+		$tokenConfirmation = Str::random(250);
+		$db->query("INSERT INTO users SET pseudo=?, email=?, password=?, token=?, level=?, confirmation_token = ?", 
+			[$pseudo, $email, $password, Str::random(50), 'member', $tokenConfirmation]
 		);
-		$user_id = $db->lastInsertId();
-		// Email::email($email, "Confirmation de votre compte", "Afin de valider votre compte merci de cliquer sur ce lien\n\nhttp://localhost/sierra/Confirmation.php?id=$user_id&token=$token");
+
 	}
 
 	public function confirm($db, $user_id, $token){
@@ -113,7 +112,7 @@ class Auth{
 	}
 
 	public function restrict(){
-		if(!$this->session->read('authentification')){
+		if(!$this->session->read('auth')){
 			$this->session->setFlash('danger', $this->options['restriction_msg']);
 			header('Location: login.php');
 			exit();
@@ -121,10 +120,10 @@ class Auth{
 	}
 
 	public function user(){
-		if(!$this->session->read('authentification')){
+		if(!$this->session->read('auth')){
 			return false;
 		}
-		return $this->session->read('authentification');
+		return $this->session->read('auth');
 	}
 
 	public function connect($user){
@@ -133,8 +132,7 @@ class Auth{
 
 	public function connectFromCookie($db){
 		if(isset($_COOKIE['remember']) && !$this->user()){
-			$remember_token = $_COOKIE['
-			'];
+			$remember_token = $_COOKIE['remember'];
 			$parts = explode('==', $remember_token);
 			$user_id = $parts[0];
 			$user = $db->query('SELECT * FROM users WHERE id = ?', [$user_id])->fetch();
@@ -152,11 +150,12 @@ class Auth{
 		}
 	}
 
-	public function login($db, $pseudo, $password){
-		$user = $db->query('SELECT * FROM users WHERE (pseudo = :pseudo) or (mail = :mail)', ['pseudo' => $pseudo, 'mail' => $pseudo])->fetch();
+	public function login($db, $pseudoOrMail, $password, $remember = false){
+		$user = $db->query('SELECT * FROM users WHERE (pseudo=? or email=?) AND confirmation_token IS NULL', [$pseudoOrMail, $pseudoOrMail])->fetch();
 		if($user){
-			if(password_verify($password, $user->pass)){
+			if(password_verify($password, $user->password)){
 				$this->connect($user);
+				if($remember) $this->remember($db, $user->id) ;
 				return $user;
 			}else{
 				return false;
@@ -175,15 +174,25 @@ class Auth{
 
 	public function logout(){
 		setcookie('remember', NULL, -1);
-		$this->session->delete('authentification');
+		$this->session->delete('auth');
 	}
 
 	public function changePassword($db, $email, $password){
 		$res = $db->query("UPDATE users SET password=? WHERE email=?", [$this->hashPassword($password), $email]);
-		if($res){
-			return true;
+		return ($res)? true : false;
+	}
+
+	public function resetPassword($db, $email){
+		$reset_token = Str::random(60);
+		$user = $db->query('SELECT * FROM users WHERE email = ? AND confirmation_at IS NOT NULL', [$email])->fetch();
+		if($user){
+			$db->query('UPDATE users SET reset_token = ?, reset_at = NOW() WHERE id = ?', [$reset_token, $user->id]);
+			return $user;
 		}
 		return false;
 	}
 
+	public function checkResetToken($db, $user_id, $token){
+		return $db->query('SELECT * FROM users WHERE id = ? AND reset_token IS NOT NULL AND reset_token = ? AND reset_at > DATE_SUB(NOW(), INTERVAL 30 MINUTE)', [$user_id, $token])->fetch();
+	}
 }
