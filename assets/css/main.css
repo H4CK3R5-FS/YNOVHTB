@@ -1,0 +1,13 @@
+:root {
+    --main-bg-color: #181818;
+    --main-dark-green: #0c343d;
+    --main-text-color: #dbdbdb;
+    --main-neon-green:#00C3B1;
+  }
+
+  @import url("https://fonts.googleapis.com/css?family=Rajdhani");
+  html,
+  body {
+    height: 100%;
+    font-family: 'Rajdhani',sans-serif;
+  }
