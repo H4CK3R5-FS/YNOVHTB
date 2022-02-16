@@ -1,45 +1,52 @@
-body,html{
-    background: var(--main-bg-color);
-    color: var(--main-text-color);
+body,
+html {
+  background: var(--main-bg-color);
+  color: var(--main-text-color);
 }
 
 .container {
-    margin-top: 5%;
+  margin-top: 5%;
 }
 
 .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: var(--main-dark-green);
-    background-clip: border-box;
-    border: 0 solid transparent;
-    border-radius: .25rem;
-    margin-bottom: 1.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: var(--main-dark-green);
+  background-clip: border-box;
+  border: 0 solid transparent;
+  border-radius: 0.25rem;
+  margin-bottom: 1.5rem;
 }
 .me-2 {
-    margin-right: .5rem!important;
+  margin-right: 0.5rem !important;
 }
 
-.change-pic{
-    cursor: pointer;
-    top: 0;
-    right: 0;
-    font-size: 20px;
-    font-weight:600;
-    opacity: 0;
-    background: rgba(0, 0, 0, 0.5);
-    transition: all 0.2s;
-
+.pic-border {
+  top: 0;
+  right: 0;
+  border: 5px solid #17a2b8;
+  z-index: 0;
 }
 
-.change-pic:hover{
-    opacity: 1;
+.change-pic {
+  cursor: pointer;
+  top: 0;
+  right: 0;
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: all 0.2s;
 }
 
-.profile-pic:hover img{
-    filter: blur(2px);
-    -webkit-filter: blur(2px);
+.change-pic:hover {
+  opacity: 1;
+}
+
+.profile-pic:hover img {
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
 }

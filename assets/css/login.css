@@ -1,9 +1,20 @@
+:root {
+  --main-bg-color: #181818;
+  --main-dark-green: #0c343d;
+  --main-text-color: #dbdbdb;
+  --main-neon-green:#00C3B1;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Numans%27");
+
 html,
 body {
   background-image: url("/assets/img/technology-g2e10d9f42_1920.jpg");
   background-size:cover;
   background-repeat: no-repeat;
-  }
+  height: 100%;
+  font-family: "Numans", sans-serif;
+}
 
 .container {
   height: 100%;
@@ -11,7 +22,6 @@ body {
 }
 
 .card {
-  height: 370px;
   margin-top: auto;
   margin-bottom: auto;
   width: 400px;
@@ -65,7 +75,7 @@ input:focus {
 .login_btn {
   color: black;
   background-color: var(--main-neon-green);
-  width: 100px;
+  width: 150px;
 }
 
 .login_btn:hover {
@@ -80,4 +90,3 @@ input:focus {
 .links a {
   margin-left: 4px;
 }
-
