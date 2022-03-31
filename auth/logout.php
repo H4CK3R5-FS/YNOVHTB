@@ -3,11 +3,11 @@
 /**
  * @Author: root
  * @Date:   2021-10-20 16:44:31
- * @Last Modified by:   root
- * @Last Modified time: 2021-11-10 14:41:48
+ * @Last Modified by:   yacine.B
+ * @Last Modified time: 2022-03-31 23:23:07
  */
 
-    require_once '../inc/bootstrap_auth.php';
+    require_once 'inc/bootstrap.php';
 
     $auth = App::getAuth();
     $db = App::getDatabase();
@@ -16,4 +16,4 @@
     App::getAuth()->logout();
     // pop-up !
     Session::getInstance()->setFlash('success', 'Your now logged out');
-    App::redirect('../index.php');
+    App::redirect('index.php');

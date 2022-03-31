@@ -4,18 +4,18 @@
  * @Author: root
  * @Date:   2021-11-10 14:12:27
  * @Last Modified by:   yacine.B
- * @Last Modified time: 2022-01-19 09:46:52
+ * @Last Modified time: 2022-03-31 23:20:27
  */
 
-require_once "../inc/bootstrap_auth.php";
-require '../inc/components/header.php';
+require_once 'inc/bootstrap.php';
+require 'inc/components/header.php';
 
 $validator = new Validator($_POST);
 $auth = App::getAuth();
 $db = App::getDatabase();
 $auth->connectFromCookie($db);
 
-if($auth->user()): App::redirect('profil/account.php'); endif;
+if($auth->user()): App::redirect('profile/'); endif;
 
 if(!empty($_POST) && !empty($_POST['email']) && !empty($_POST['reset'])):
 	$validator->isEmail('email', "Invalid E-mail field !");
@@ -34,7 +34,7 @@ endif;
 			<form method="POST">
 				<h1>Forgot your password</h1>
 
-				<?php require '../inc/components/head.php'; ?>
+				<?php require 'inc/components/head.php'; ?>
                 <?php if(!empty($errors)): ?>
                 <div class="alert alert-danger">
                     <p>Incorrectly completed form</p>
@@ -60,4 +60,4 @@ endif;
 	</div>
 
 
-<?php require_once "../inc/components/footer.php"; ?>
+<?php require_once "inc/components/footer.php"; ?>

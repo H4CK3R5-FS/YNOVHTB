@@ -4,18 +4,18 @@
  * @Author: root
  * @Date:   2021-11-10 15:38:21
  * @Last Modified by:   yacine.B
- * @Last Modified time: 2022-01-19 09:46:40
+ * @Last Modified time: 2022-03-31 23:25:00
  */
 
-require_once "../inc/bootstrap_auth.php";
-require_once '../inc/components/header.php';
+require_once 'inc/bootstrap.php';
+require_once 'inc/components/header.php';
 
 $validator = new Validator($_POST);
 $auth = App::getAuth();
 $db = App::getDatabase();
 $auth->connectFromCookie($db);
 
-if($auth->user()): App::redirect('profil/account.php'); endif;
+if($auth->user()): App::redirect('profile/'); endif;
 
 if(!empty($_GET) && !empty($_GET['id']) && !empty($_GET['token'])):
 	$user = $auth->checkResetToken($db, $_GET['id'], $_GET['token']);
@@ -31,17 +31,17 @@ if(!empty($_GET) && !empty($_GET['id']) && !empty($_GET['token'])):
 				$auth->connect($user);
 
 				$session->setFlash('success','Your password has been changed successfuly');
-				App::redirect('prl/account.php');
+				App::redirect('profile/');
 			else:
 				$errors = $validator->getErrors();
 			endif;
 		endif;
 	else:
 		$session->setFlash('danger',"This token is not valid");
-		App::redirect('../index.php');
+		App::redirect('index.php');
 	endif;
 else:
-	App::redirect('../index.php');
+	App::redirect('index.php');
 endif;
 
 ?>
@@ -51,7 +51,7 @@ endif;
 			
 				<h1>Reset Password</h1>
 
-				<?php require '../inc/components/head.php'; ?>
+				<?php require 'inc/components/head.php'; ?>
                 <?php if(!empty($errors)): ?>
                 <div class="alert alert-danger">
                     <p>Incorrectly completed form</p>
@@ -81,4 +81,4 @@ endif;
 		</div>
 	</div>
 
-<?php require_once '../inc/components/header.php'; ?>
+<?php require_once 'inc/components/header.php'; ?>

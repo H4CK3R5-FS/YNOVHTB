@@ -3,11 +3,11 @@
 /**
  * @Author: root
  * @Date:   2021-10-20 14:50:07
- * @Last Modified by:   root
- * @Last Modified time: 2021-11-10 14:41:33
+ * @Last Modified by:   yacine.B
+ * @Last Modified time: 2022-03-31 23:24:00
  */
 
-	require_once "../inc/bootstrap_auth.php";
+	require_once 'inc/bootstrap.php';
 
 	$errors = [];
 
@@ -16,7 +16,7 @@
     $db = App::getDatabase();
     $auth->connectFromCookie($db);
 	
-    if($auth->user()): App::redirect('../profil/account.php'); endif;
+    if($auth->user()): App::redirect('../profile/'); endif;
 
     if(!empty($_POST) && !empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['pass'])):
 
@@ -35,13 +35,13 @@
 				strtolower(htmlspecialchars($_POST['email'])), 
 				htmlspecialchars($_POST['pass'])
 			);
-            App::redirect('../index.php');
+            App::redirect('index.php');
         else:
          	$errors = $validator->getErrors();
         endif;
     endif;
 
-	require_once "../inc/components/header.php";
+	require_once "inc/components/header.php";
 
 ?>
 
@@ -52,7 +52,7 @@
 
 				<h1>Regsiter Y-HTB</h1>
 				
-				<?php require '../inc/components/head.php'; ?>
+				<?php require 'inc/components/head.php'; ?>
                 <?php if(!empty($errors)): ?>
                 <div class="alert alert-danger">
                     <p>Incorrectly completed form</p>
@@ -99,4 +99,4 @@
 		</div>
 	</div>
 
-<?php require_once '../inc/components/footer.php'; ?>
+<?php require_once 'inc/components/footer.php'; ?>
