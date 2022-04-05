@@ -25,7 +25,7 @@
 								<div class="card-body pb-0">
 									<div class="h1 fw-bold float-right text-primary">+5%</div>
 									<h2 class="mb-2">17</h2>
-									<p class="text-muted">Users online</p>
+									<p class="text-muted">Activities</p>
 									<div class="pull-in sparkline-fix">
 										<div id="lineChart"></div>
 									</div>
@@ -37,7 +37,7 @@
 								<div class="card-body pb-0">
 									<div class="h1 fw-bold float-right text-danger">-3%</div>
 									<h2 class="mb-2">27</h2>
-									<p class="text-muted">New Users</p>
+									<p class="text-muted">Lessons</p>
 									<div class="pull-in sparkline-fix">
 										<div id="lineChart2"></div>
 									</div>

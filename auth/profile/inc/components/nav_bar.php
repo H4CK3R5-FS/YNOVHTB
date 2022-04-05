@@ -4,7 +4,7 @@
  * @Author: yacine.B
  * @Date:   2022-03-31 20:42:11
  * @Last Modified by:   yacine.B
- * @Last Modified time: 2022-03-31 23:14:43
+ * @Last Modified time: 2022-03-31 23:32:16
  */
 ?>
 
@@ -13,8 +13,9 @@
 		<!-- Logo Header -->
 		<div class="logo-header" data-background-color="dark">
 			
-			<a href="index.html" class="logo">
-				<span class="text-white h2"><img src="assets/img/logo.png" alt="YnovHTB" class="navbar-brand">&nbsp;YnovHTB</span>
+			<a href="index.php" class="logo">
+				<img src="assets/img/logo.png" alt="YnovHTB" class="navbar-brand" style="width: 9em; margin-left: -1em;">
+				<!-- <span class="text-white h2">&nbsp;YnovHTB</span> -->
 			</a>
 			<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon">
@@ -128,7 +129,7 @@
 										<div class="avatar-lg"><img src="assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
 										<div class="u-text">
 											<h4>B.Yacine</h4>
-											<p class="text-muted">boufala.yacine@ynov.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+											<p class="text-muted">boufala.yacine@ynov.com</p><a href="profile.php" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
 										</div>
 									</div>
 								</li>
