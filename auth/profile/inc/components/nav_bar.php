@@ -3,9 +3,10 @@
 /**
  * @Author: yacine.B
  * @Date:   2022-03-31 20:42:11
- * @Last Modified by:   yacine.B
- * @Last Modified time: 2022-03-31 23:32:16
+ * @Last Modified by:   root
+ * @Last Modified time: 2022-04-06 01:11:08
  */
+
 ?>
 
 <div class="wrapper">
@@ -98,7 +99,7 @@
 									<div class="notif-center">
 										<a href="#">
 											<div class="notif-img"> 
-												<img src="assets/img/profile2.jpg" alt="Img Profile">
+												<img src="assets/img/profile.jpg" alt="Img Profile">
 											</div>
 											<div class="notif-content">
 												<span class="block">
@@ -119,7 +120,7 @@
 					<li class="nav-item dropdown hidden-caret">
 						<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 							<div class="avatar-sm">
-								<img src="assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+								<img src="assets/img/profile.jpg" alt="profile photo" class="avatar-img rounded-circle">
 							</div>
 						</a>
 						<ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -128,18 +129,18 @@
 									<div class="user-box">
 										<div class="avatar-lg"><img src="assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
 										<div class="u-text">
-											<h4>B.Yacine</h4>
-											<p class="text-muted">boufala.yacine@ynov.com</p><a href="profile.php" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+											<h4><?= $auth->user()->pseudo; ?></h4>
+											<p class="text-muted"><?= $auth->user()->email; ?></p><a href="profile.php" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
 										</div>
 									</div>
 								</li>
 								<li>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">My Profile</a>
+									<a class="dropdown-item" href="profile.php">My Profile</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">Account Setting</a>
+									<a class="dropdown-item" href="profile.php">Account Setting</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">Logout</a>
+									<a class="dropdown-item" href="../logout.php">Logout</a>
 								</li>
 							</div>
 						</ul>

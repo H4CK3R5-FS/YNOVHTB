@@ -3,8 +3,8 @@
 /**
  * @Author: Mockingbird
  * @Date:   2021-10-20 15:03:28
- * @Last Modified by:   yacine.B
- * @Last Modified time: 2021-11-24 11:02:48
+ * @Last Modified by:   root
+ * @Last Modified time: 2022-04-06 01:27:40
  */
 
 class Auth{
@@ -19,6 +19,42 @@ class Auth{
 	public function __construct($session, $options = []){
 		$this->options = array_merge($this->options, $options);
 		$this->session = $session;
+	}
+
+
+	public function isIndexHere($db, $table, $attributes, $values){
+		$res = $db->query("SELECT id FROM $table WHERE $attributes", $values)->fetch();
+		return ($res)? true : false ;  
+	}
+
+	
+	public function getAllIndex($db, $table, $attributes='', $values, $getValue='*', $limit=''){
+		return $db->query("SELECT $getValue FROM $table ".((!empty($attributes))? "WHERE $attributes" : '')." $limit", $values)->fetchAll();
+	}
+
+	
+	public function getThis($db, $table, $attributes, $values, $getValue="*"){
+		return $db->query("SELECT $getValue FROM $table WHERE $attributes", $values)->fetch();
+	}
+
+	
+	public function deleteIndex($db, $table, $attributes, $values){
+		$db->query("DELETE FROM $table WHERE $attributes", $values);
+	}
+
+	
+	public function addIndex($db, $table, $attributes, $values){
+		return $db->query("INSERT INTO $table SET $attributes", $values);
+	}
+
+	
+	public function editIndex($db, $table, $attributes, $attributes2, $values){
+		return $db->query("UPDATE $table SET $attributes WHERE $attributes2", $values);
+	}
+
+	
+	public function getCount($db, $table, $field, $value){
+		return $db->query("SELECT count(id) as nb FROM $table WHERE $field", $value)->fetch();
 	}
 
 	/**
@@ -38,9 +74,13 @@ class Auth{
 	public function register($db, $pseudo, $email, $password){
 		$password = $this->hashPassword($password);
 		$tokenConfirmation = Str::random(250);
+		$token_user = Str::random(50);
 		$db->query("INSERT INTO users SET pseudo=?, email=?, password=?, token=?, level=?, confirmation_token = ?", 
-			[$pseudo, $email, $password, Str::random(50), 'member', $tokenConfirmation]
-		);
+			[$pseudo, $email, $password, $token_user, 'member', $tokenConfirmation]);
+
+		# init progression to 0
+		$db->query("INSERT INTO user_progression SET token_user=?, exp=?, level=?, grade=?, token=?, lastEdit_at=NOW()", 
+			[$token_user, 0, 0, 'Débutant', Str::random(20)]);
 		// Email::send()
 	}
 
@@ -65,7 +105,7 @@ class Auth{
 	public function restrict(){
 		if(!$this->session->read('auth')){
 			$this->session->setFlash('danger', $this->options['restriction_msg']);
-			header('Location: auth/index.php');
+			header('Location: auth/');
 			exit();
 		}
 	}

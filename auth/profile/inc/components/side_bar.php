@@ -3,8 +3,8 @@
 /**
  * @Author: yacine.B
  * @Date:   2022-03-31 20:46:37
- * @Last Modified by:   yacine.B
- * @Last Modified time: 2022-03-31 23:15:32
+ * @Last Modified by:   root
+ * @Last Modified time: 2022-04-06 01:53:39
  */
 
 ?>
@@ -20,8 +20,8 @@
 				<div class="info">
 					<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 						<span>
-							B.Yacine
-							<span class="user-level">Level 3</span>
+							<?= $auth->user()->pseudo; ?>
+							<span class="user-level">Level <?= $auth->getThis($db, 'user_progression', 'token_user=?', [$auth->user()->token])->level ?> </span>
 							<span class="caret"></span>
 						</span>
 					</a>
@@ -49,12 +49,27 @@
 				</div>
 			</div>
 			<ul class="nav nav-primary">
-				<li class="nav-item active">
+				<li class="nav-item <?= ($active_dash)? 'active': ''; ?>">
 					<a href="./" aria-expanded="false">
 						<i class="fas fa-home"></i>
 						<p>Dashboard</p>
 					</a>
 				</li>
+
+				<li class="nav-item <?= ($active_lessons)? 'active': ''; ?>">
+					<a href="lessons.php" aria-expanded="false">
+						<i class="fas fa-book"></i>
+						<p>Lessons</p>
+					</a>
+				</li>
+
+				<li class="nav-item <?= ($active_act)? 'active': ''; ?>">
+					<a href="activities.php" aria-expanded="false">
+						<i class="fas fa-clock"></i>
+						<p>Activities</p>
+					</a>
+				</li>
+
 				<li class="nav-section">
 					<span class="sidebar-mini-icon">
 						<i class="fa fa-ellipsis-h"></i>

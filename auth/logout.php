@@ -3,17 +3,16 @@
 /**
  * @Author: root
  * @Date:   2021-10-20 16:44:31
- * @Last Modified by:   yacine.B
- * @Last Modified time: 2022-03-31 23:23:07
+ * @Last Modified by:   root
+ * @Last Modified time: 2022-04-06 00:08:33
  */
 
-    require_once 'inc/bootstrap.php';
+require 'inc/bootstrap.php';
 
-    $auth = App::getAuth();
-    $db = App::getDatabase();
-    $auth->connectFromCookie($db);
+$auth = App::getAuth();
+$db = App::getDatabase();
+$auth->connectFromCookie($db);
 
-    App::getAuth()->logout();
-    // pop-up !
-    Session::getInstance()->setFlash('success', 'Your now logged out');
-    App::redirect('index.php');
+App::getAuth()->logout();
+Session::getInstance()->setFlash('success', 'Vous êtes maintenant déconnecté');
+App::redirect('index.php');

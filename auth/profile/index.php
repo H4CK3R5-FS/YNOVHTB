@@ -1,21 +1,46 @@
 <?php
-	require_once "inc/bootstrap.php";
-	require_once 'inc/components/header.php';
-	require_once 'inc/components/nav_bar.php';
-	require_once 'inc/components/side_bar.php';
+
+/**
+ * @Author: root
+ * @Date:   2022-04-06 00:59:39
+ * @Last Modified by:   root
+ * @Last Modified time: 2022-04-06 01:53:17
+ */
+
+    require_once "inc/bootstrap.php";
+
+    $errors = array();
+
+    $auth = App::getAuth();
+    $db = App::getDatabase();
+    $auth->connectFromCookie($db);
+
+    if(!($auth->user())){
+        $session = Session::getInstance();
+        $session->setFlash('danger', 'Vous devez être connecter avant de continuer !');
+        App::redirect('../index.php');
+    }
+
+    $active_dash = true;
+    require_once 'inc/components/header.php';
+    require_once 'inc/components/nav_bar.php';
+    require_once 'inc/components/side_bar.php';
+
 ?>
 
 <div class="main-panel">
 	<div class="content">
 		<div class="page-inner">
+			<?php if(Session::getInstance()->hasFlashes()): ?>
 			<div class="mt-2 mb-4">
-				<h2 class="text-white pb-2">Welcome back, Yacine !</h2>
+				<h2 class="text-white pb-2">Welcome back, <?= $auth->user()->pseudo; ?> !</h2>
 				<h5 class="text-white op-7 mb-4">
 					<span class="text-white">
 						Yesterday I was clever, so I wanted to change the world. Today I am wise, so I am changing myself.
 					</span>
 				</h5>
 			</div>
+			<?php endif; ?>
 			
 			<div class="row">
 				<div class="col-md-8">
@@ -71,7 +96,11 @@
 								<div class="card-body">
 									<h4 class="mb-1 fw-bold">Progression</h4>
 									<div id="task-complete" class="chart-circle mt-4 mb-3"></div>
-									<span class="text-white h2">Lvl 3 ~> Lvl 4</span>
+									<span class="text-white h2">
+										Lvl <?= $auth->getThis($db, 'user_progression', 'token_user=?', [$auth->user()->token])->level ?> 
+										~> 
+										Lvl <?= $auth->getThis($db, 'user_progression', 'token_user=?', [$auth->user()->token])->level+1 ?>
+									</span>
 								</div>
 							</div>
 						</div>
@@ -261,4 +290,4 @@
 		</div>
 	</div>
 
-	<?php require_once 'inc/components/footer.php'; ?>
+<?php require_once 'inc/components/footer.php'; ?>
