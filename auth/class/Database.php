@@ -4,7 +4,7 @@
  * @Author: Mockingbird
  * @Date:   2021-10-20 15:03:28
  * @Last Modified by:   root
- * @Last Modified time: 2021-11-10 14:38:57
+ * @Last Modified time: 2022-04-06 14:18:06
  */
 
 class Database{
@@ -16,11 +16,6 @@ class Database{
         $this->pdo->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES 'utf8'");
     }
 
-    /**
-     * @param $query
-     * @param bool|array $params
-     * @return PDOStatement
-     */
     public function query($query, $params = false){
         if($params){
             $req = $this->pdo->prepare($query);

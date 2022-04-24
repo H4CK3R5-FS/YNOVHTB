@@ -120,7 +120,7 @@
 											<img src="assets/img/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
 										</div>
 										<div class="flex-1 pt-1 ml-2">
-											<h6 class="fw-bold mb-1">CSS</h6>
+											<h6 class="fw-bold mb-1">Yupa</h6>
 											<small class="text-white">Cascading Style Sheets</small>
 										</div>
 										<div class="d-flex ml-auto align-items-center">
@@ -133,8 +133,22 @@
 											<img src="assets/img/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
 										</div>
 										<div class="flex-1 pt-1 ml-2">
-											<h6 class="fw-bold mb-1">J.CO Donuts</h6>
-											<small class="text-white">The Best Donuts</small>
+											<h6 class="fw-bold mb-1">KingLucifer</h6>
+											<small class="text-white">King of noob</small>
+										</div>
+										<div class="d-flex ml-auto align-items-center">
+											<h3 class="text-info fw-bold">Lvl 1</h3>
+										</div>
+									</div>
+
+									<div class="separator-dashed"></div>
+									<div class="d-flex">
+										<div class="avatar">
+											<img src="assets/img/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
+										</div>
+										<div class="flex-1 pt-1 ml-2">
+											<h6 class="fw-bold mb-1">Brc</h6>
+											<small class="text-white">Programming</small>
 										</div>
 										<div class="d-flex ml-auto align-items-center">
 											<h3 class="text-info fw-bold">Lvl 12</h3>
@@ -147,25 +161,11 @@
 											<img src="assets/img/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
 										</div>
 										<div class="flex-1 pt-1 ml-2">
-											<h6 class="fw-bold mb-1">J.CO Donuts</h6>
-											<small class="text-white">The Best Donuts</small>
+											<h6 class="fw-bold mb-1">Yacine</h6>
+											<small class="text-white">God of PHP</small>
 										</div>
 										<div class="d-flex ml-auto align-items-center">
-											<h3 class="text-info fw-bold">Lvl 12</h3>
-										</div>
-									</div>
-
-									<div class="separator-dashed"></div>
-									<div class="d-flex">
-										<div class="avatar">
-											<img src="assets/img/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
-										</div>
-										<div class="flex-1 pt-1 ml-2">
-											<h6 class="fw-bold mb-1">J.CO Donuts</h6>
-											<small class="text-white">The Best Donuts</small>
-										</div>
-										<div class="d-flex ml-auto align-items-center">
-											<h3 class="text-info fw-bold">Lvl 12</h3>
+											<h3 class="text-info fw-bold">Lvl 100</h3>
 										</div>
 									</div>
 
@@ -175,11 +175,11 @@
 											<img src="assets/img/logoproduct3.svg" alt="..." class="avatar-img rounded-circle">
 										</div>
 										<div class="flex-1 pt-1 ml-2">
-											<h6 class="fw-bold mb-1">Ready Pro</h6>
-											<small class="text-white">Bootstrap 4 Admin Dashboard</small>
+											<h6 class="fw-bold mb-1">Vexs</h6>
+											<small class="text-white">Forensic</small>
 										</div>
 										<div class="d-flex ml-auto align-items-center">
-											<h3 class="text-info fw-bold">Lvl 3</h3>
+											<h3 class="text-info fw-bold">Lvl 70</h3>
 										</div>
 									</div>
 									<div class="separator-dashed"></div>
@@ -196,59 +196,59 @@
 						<div class="card-header">
 							<div class="card-head-row">
 								<div class="card-title">
-									<span class="text-white"><span class="mr-2"><i class="fas fa-history"></i></span>Activities</span>
+									<span class="text-white"><span class="mr-2"><i class="fas fa-history"></i></span>Your Activities</span>
 								</div>
 							</div>
 						</div>
 						<div class="card-body">
 							<div class="d-flex">
 								<div class="avatar avatar-online">
-									<span class="avatar-title rounded-circle border border-white bg-info">J</span>
+									<span class="avatar-title rounded-circle border border-white bg-danger">R</span>
 								</div>
 								<div class="flex-1 ml-3 pt-1">
-									<h6 class="text-uppercase fw-bold mb-1">Joko Subianto <span class="text-warning pl-3">pending</span></h6>
-									<span class="text-muted">I am facing some trouble with my viewport. When i start my</span>
+									<h6 class="text-uppercase fw-bold mb-1">craking Room <span class="text-warning pl-3">soon finished</span></h6>
+									<span class="text-muted">Current Leader KingLucifer !</span>
 								</div>
 							</div>
 							<div class="separator-dashed"></div>
 							<div class="d-flex">
-								<div class="avatar avatar-offline">
-									<span class="avatar-title rounded-circle border border-white bg-secondary">P</span>
+								<div class="avatar avatar-online">
+									<span class="avatar-title rounded-circle border border-white bg-secondary">F</span>
 								</div>
 								<div class="flex-1 ml-3 pt-1">
-									<h6 class="text-uppercase fw-bold mb-1">Prabowo Widodo <span class="text-success pl-3">open</span></h6>
-									<span class="text-muted">I have some query regarding the license issue.</span>
+									<h6 class="text-uppercase fw-bold mb-1">How to hack the nasa ?  <span class="text-success pl-3">open</span></h6>
+									<span class="text-muted">Last message - now </span>
 								</div>
 							</div>
 							<div class="separator-dashed"></div>
 							<div class="d-flex">
 								<div class="avatar avatar-away">
-									<span class="avatar-title rounded-circle border border-white bg-danger">L</span>
+									<span class="avatar-title rounded-circle border border-white bg-danger">R</span>
 								</div>
 								<div class="flex-1 ml-3 pt-1">
-									<h6 class="text-uppercase fw-bold mb-1">Lee Chong Wei <span class="text-muted pl-3">closed</span></h6>
-									<span class="text-muted">Is there any update plan for RTL version near future?</span>
+									<h6 class="text-uppercase fw-bold mb-1">Programming Room <span class="text-muted pl-3">closed</span></h6>
+									<span class="text-muted">Winner brc_du_bk !</span>
 								</div>
 							</div>
 							
 							<div class="separator-dashed"></div>
 							<div class="d-flex">
-								<div class="avatar avatar-offline">
-									<span class="avatar-title rounded-circle border border-white bg-secondary">P</span>
+								<div class="avatar avatar-away">
+									<span class="avatar-title rounded-circle border border-white bg-secondary">F</span>
 								</div>
 								<div class="flex-1 ml-3 pt-1">
-									<h6 class="text-uppercase fw-bold mb-1">Peter Parker <span class="text-success pl-3">open</span></h6>
-									<span class="text-muted">I have some query regarding the license issue.</span>
+									<h6 class="text-uppercase fw-bold mb-1">How to make a reverse shell ?<span class="text-success pl-3">open</span></h6>
+									<span class="text-muted">Last message - 1 hour ago</span>
 								</div>
 							</div>
 							<div class="separator-dashed"></div>
 							<div class="d-flex">
-								<div class="avatar avatar-away">
-									<span class="avatar-title rounded-circle border border-white bg-danger">L</span>
+								<div class="avatar avatar-offline">
+									<span class="avatar-title rounded-circle border border-white bg-warning">A</span>
 								</div>
 								<div class="flex-1 ml-3 pt-1">
-									<h6 class="text-uppercase fw-bold mb-1">Logan Paul <span class="text-muted pl-3">closed</span></h6>
-									<span class="text-muted">Is there any update plan for RTL version near future?</span>
+									<h6 class="text-uppercase fw-bold mb-1">admin <span class="text-muted pl-3">closed</span></h6>
+									<span class="text-muted">New challenges coming in 2 days !</span>
 								</div>
 							</div>
 						</div>
@@ -264,23 +264,23 @@
 							<ol class="activity-feed">
 								<li class="feed-item feed-item-secondary">
 									<time class="date" datetime="9-25">Sep 25</time>
-									<span class="text">Responded to need <a href="#">"Volunteer opportunity"</a></span>
+									<span class="text">New Reward <a href="#">"Script kiddie"</a></span>
 								</li>
 								<li class="feed-item feed-item-success">
 									<time class="date" datetime="9-24">Sep 24</time>
-									<span class="text">Added an interest <a href="#">"Volunteer Activities"</a></span>
+									<span class="text">New lesson started <a href="#">"Linux: The Basics"</a></span>
 								</li>
 								<li class="feed-item feed-item-info">
 									<time class="date" datetime="9-23">Sep 23</time>
-									<span class="text">Joined the group <a href="single-group.php">"Boardsmanship Forum"</a></span>
+									<span class="text">Joined the group <a href="single-group.php">"Fsociety"</a></span>
 								</li>
 								<li class="feed-item feed-item-warning">
 									<time class="date" datetime="9-21">Sep 21</time>
-									<span class="text">Responded to need <a href="#">"In-Kind Opportunity"</a></span>
+									<span class="text">Challenges completed <a href="#">"Bulldog"</a></span>
 								</li>
 								<li class="feed-item feed-item-danger">
 									<time class="date" datetime="9-18">Sep 18</time>
-									<span class="text">Created need <a href="#">"Volunteer Opportunity"</a></span>
+									<span class="text">Account created <a href="#">"Welcom to YNOV-HTB ! "</a></span>
 								</li>
 							</ol>
 						</div>
