@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mer. 04 mai 2022 à 11:21
+-- Généré le : mer. 04 mai 2022 à 15:06
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 7.4.28
 
@@ -31,7 +31,7 @@ CREATE TABLE `challenge` (
   `id` int(11) NOT NULL,
   `c_name` varchar(100) NOT NULL,
   `c_flag` varchar(255) NOT NULL,
-  `c_description` text NOT NULL,
+  `c_description` text DEFAULT NULL,
   `c_add_infos` text DEFAULT NULL,
   `exp` int(11) NOT NULL DEFAULT 50,
   `c_category` varchar(20) NOT NULL,
@@ -47,12 +47,15 @@ CREATE TABLE `challenge` (
 --
 
 INSERT INTO `challenge` (`id`, `c_name`, `c_flag`, `c_description`, `c_add_infos`, `exp`, `c_category`, `path`, `token`, `token_uploader`, `Status`, `date_at`) VALUES
-(1, 'Challenge n001', 'KJSDFGHJKrtyujnbvf34567', 'Challenge N001', '', 100, 'Craking', NULL, 'YiHquoPiEh0rwxhVYYON', 'YiHquoPiEh0rwxhVYYONfBzMaZ2Drxt5SqW6mhkfJn33ej9iTv', 'Pendding', '2022-05-04 02:34:18'),
-(2, 'Challenge n002', 'LGFDSZERTHKUYTVHYTRDCVBHYTRY22', 'Test', '', 100, 'Reverse engineering', NULL, 'fyYRR2rNTZ0OvrCGj6YK', 'YiHquoPiEh0rwxhVYYONfBzMaZ2Drxt5SqW6mhkfJn33ej9iTv', 'Confirmed', '2022-05-04 02:39:48'),
-(4, 'Challenge n0032', 'LGFDSZERTHKUYTVHYTRDCVBHYTRY22', '', '', 100, 'Forensic', NULL, 'ZuOLgPXFIs1JIXbOvnuG', 'Y9xMgda2fgdeQCL4Wj2cpP6lGdJyQ9OMVGAvg52nSvOSMXASDC', 'Pendding', '2022-05-04 04:57:27'),
-(5, 'Challenge n0033', 'eqsdqsNBVGBYTRDCVGYTFCVBJ', '', '', 100, 'Craking', NULL, 'm4xXHq129PRl5yMVWEYe', 'Y9xMgda2fgdeQCL4Wj2cpP6lGdJyQ9OMVGAvg52nSvOSMXASDC', 'Pendding', '2022-05-04 05:00:33'),
+(1, 'Challenge n001', 'KJSDFGHJKrtyujnbvf34567', 'Challenge N001', '', 100, 'Craking', 'recent/challenges/challenge-62725a5643dcd.yml', 'YiHquoPiEh0rwxhVYYON', 'YiHquoPiEh0rwxhVYYONfBzMaZ2Drxt5SqW6mhkfJn33ej9iTv', 'Pendding', '2022-05-04 02:34:18'),
+(2, 'Challenge n002', 'LGFDSZERTHKUYTVHYTRDCVBHYTRY22', 'Test', '', 100, 'Reverse engineering', 'recent/challenges/challenge-62725a5643dcd.yml', 'fyYRR2rNTZ0OvrCGj6YK', 'YiHquoPiEh0rwxhVYYONfBzMaZ2Drxt5SqW6mhkfJn33ej9iTv', 'Confirmed', '2022-05-04 02:39:48'),
+(4, 'Challenge n0032', 'LGFDSZERTHKUYTVHYTRDCVBHYTRY22', '', '', 100, 'Forensic', 'recent/challenges/challenge-62725a5643dcd.yml', 'ZuOLgPXFIs1JIXbOvnuG', 'Y9xMgda2fgdeQCL4Wj2cpP6lGdJyQ9OMVGAvg52nSvOSMXASDC', 'Pendding', '2022-05-04 04:57:27'),
+(5, 'Challenge n0033', 'eqsdqsNBVGBYTRDCVGYTFCVBJ', '', '', 100, 'Craking', 'recent/challenges/challenge-62725a5643dcd.yml', 'm4xXHq129PRl5yMVWEYe', 'Y9xMgda2fgdeQCL4Wj2cpP6lGdJyQ9OMVGAvg52nSvOSMXASDC', 'Confirmed', '2022-05-04 05:00:33'),
 (6, 'Challenge n0034', 'JHUIJHGYUKOIUHJUISOKSY7SYHS7YS7Z77Z78U8282UGUHHJ', 'Test 517', '', 100, 'Craking', 'recent/challenges/challenge-6271ecb44d1d4.yml', 'UMNSh6xVhVeYlehaMqIJ', 'Y9xMgda2fgdeQCL4Wj2cpP6lGdJyQ9OMVGAvg52nSvOSMXASDC', 'Pendding', '2022-05-04 05:02:12'),
-(7, 'Challenge n0039', 'lkqjkdsjqsdioqdnqiqudsnqqkmqkdqsmjdqslkdq', 'Test', '', 100, 'Craking', NULL, 'mvQzM2i7PbbAhv0KTGX4', 'Y9xMgda2fgdeQCL4Wj2cpP6lGdJyQ9OMVGAvg52nSvOSMXASDC', 'Pendding', '2022-05-04 05:10:05');
+(7, 'Challenge n0039', 'lkqjkdsjqsdioqdnqiqudsnqqkmqkdqsmjdqslkdq', 'Test', '', 100, 'Craking', 'recent/challenges/challenge-62725a5643dcd.yml', 'mvQzM2i7PbbAhv0KTGX4', 'Y9xMgda2fgdeQCL4Wj2cpP6lGdJyQ9OMVGAvg52nSvOSMXASDC', 'Pendding', '2022-05-04 05:10:05'),
+(8, 'Challenge n004', 'LKJHGFDERTYUJNBVCDRTH', NULL, NULL, 100, 'Forensic', 'recent/challenges/challenge-62725a5643dcd.yml', 'JRXbHmkwxMG6gafjO9pN', 'YiHquoPiEh0rwxhVYYONfBzMaZ2Drxt5SqW6mhkfJn33ej9iTv', 'Pendding', '2022-05-04 12:39:37'),
+(9, 'Challenge n005', 'JHGIUHKHKUJ7654ZE56UNKIsqsdqsrNBHUI', NULL, NULL, 100, 'Craking', 'recent/challenges/challenge-627258849cbd7.yml', 'uNvcYOmnp2RT78ftIx2e', 'YiHquoPiEh0rwxhVYYONfBzMaZ2Drxt5SqW6mhkfJn33ej9iTv', 'Pendding', '2022-05-04 12:42:12'),
+(10, 'Challenge n006', 'LKJHGF45THNUYTREDCVBHY6', 'Test !', NULL, 100, 'Craking', 'recent/challenges/challenge-62725a5643dcd.yml', 'nFFtOgy6Qa8XkzmJizTL', 'YiHquoPiEh0rwxhVYYONfBzMaZ2Drxt5SqW6mhkfJn33ej9iTv', 'Pendding', '2022-05-04 12:49:58');
 
 -- --------------------------------------------------------
 
@@ -97,7 +100,9 @@ CREATE TABLE `rating_challenges` (
 INSERT INTO `rating_challenges` (`id`, `rate_positive`, `rate_negative`, `token_user`, `token_challenge`, `token`) VALUES
 (1, 1, NULL, 'YiHquoPiEh0rwxhVYYONfBzMaZ2Drxt5SqW6mhkfJn33ej9iTv', 'YiHquoPiEh0rwxhVYYON', 'D5KJhro2od0mUMqLGsRK'),
 (12, 1, NULL, 'YiHquoPiEh0rwxhVYYONfBzPds2Drxt5SqW6mhkfJn33ej9iTv', 'YiHquoPiEh0rwxhVYYON', 'D5KJhro2od0mUMqLsdRK'),
-(24, 1, NULL, 'YiHquoPiEh0rwxhVYYONfBzMaZ2Drxt5SqW6mhkfJn33ej9iTv', 'mvQzM2i7PbbAhv0KTGX4', 'BXK8DixM0OkqYaIfJllR');
+(24, 1, NULL, 'YiHquoPiEh0rwxhVYYONfBzMaZ2Drxt5SqW6mhkfJn33ej9iTv', 'mvQzM2i7PbbAhv0KTGX4', 'BXK8DixM0OkqYaIfJllR'),
+(25, NULL, 1, 'YiHquoPiEh0rwxhVYYONfBzMaZ2Drxt5SqW6mhkfJn33ej9iTv', 'UMNSh6xVhVeYlehaMqIJ', 'vNSSEK5KP4mNfvBC4S6A'),
+(26, 1, NULL, 'YiHquoPiEh0rwxhVYYONfBzMaZ2Drxt5SqW6mhkfJn33ej9iTv', 'ZuOLgPXFIs1JIXbOvnuG', '8A6o7vE6jieeox4sEllI');
 
 -- --------------------------------------------------------
 
@@ -140,10 +145,16 @@ CREATE TABLE `user_challenge` (
   `id` int(11) NOT NULL,
   `token_user` varchar(50) NOT NULL,
   `token_challenge` varchar(50) NOT NULL,
-  `progression` double NOT NULL DEFAULT 0,
   `token` varchar(20) NOT NULL,
   `modifed_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='User challenge';
+
+--
+-- Déchargement des données de la table `user_challenge`
+--
+
+INSERT INTO `user_challenge` (`id`, `token_user`, `token_challenge`, `token`, `modifed_at`) VALUES
+(1, 'YiHquoPiEh0rwxhVYYONfBzMaZ2Drxt5SqW6mhkfJn33ej9iTv', 'fyYRR2rNTZ0OvrCGj6YK', 'C5YfCgbb4vMSzixhqVrG', '2022-05-04 15:01:56');
 
 -- --------------------------------------------------------
 
@@ -217,7 +228,8 @@ ALTER TABLE `users`
 --
 ALTER TABLE `user_challenge`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `token` (`token`);
+  ADD UNIQUE KEY `token` (`token`),
+  ADD UNIQUE KEY `modifed_at` (`modifed_at`);
 
 --
 -- Index pour la table `user_progression`
@@ -235,7 +247,7 @@ ALTER TABLE `user_progression`
 -- AUTO_INCREMENT pour la table `challenge`
 --
 ALTER TABLE `challenge`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `contact`
@@ -247,7 +259,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT pour la table `rating_challenges`
 --
 ALTER TABLE `rating_challenges`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT pour la table `users`
@@ -259,7 +271,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `user_challenge`
 --
 ALTER TABLE `user_challenge`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `user_progression`
