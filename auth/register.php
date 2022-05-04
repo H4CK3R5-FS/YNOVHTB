@@ -4,7 +4,7 @@
  * @Author: root
  * @Date:   2021-10-20 14:50:07
  * @Last Modified by:   root
- * @Last Modified time: 2022-04-06 00:52:04
+ * @Last Modified time: 2022-05-04 10:51:23
  */
 
 require_once 'inc/bootstrap.php';
@@ -17,6 +17,7 @@ $auth = App::getAuth();
 $db = App::getDatabase();
 $auth->connectFromCookie($db);
 
+try { if(isset($auth->user()->token)): App::redirect('profile/'); endif; } catch (Exception $e) {}
 
 if(!empty($_POST) && !empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['pass'])):
 

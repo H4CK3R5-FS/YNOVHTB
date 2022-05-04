@@ -4,7 +4,7 @@
  * @Author: root
  * @Date:   2021-11-10 15:38:21
  * @Last Modified by:   root
- * @Last Modified time: 2022-04-06 00:51:49
+ * @Last Modified time: 2022-05-04 10:51:28
  */
 
 require_once 'inc/bootstrap.php';
@@ -14,6 +14,8 @@ require_once 'inc/components/header.php';
 $auth = App::getAuth();
 $db = App::getDatabase();
 $validator = new Validator($_POST);
+
+try { if(isset($auth->user()->token)): App::redirect('profile/'); endif; } catch (Exception $e) {}
 
 if(!empty($_GET) && !empty($_GET['id']) && !empty($_GET['token'])){
     $user = $auth->checkResetToken($db, $_GET['id'], $_GET['token']);

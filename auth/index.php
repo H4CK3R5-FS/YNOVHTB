@@ -4,7 +4,7 @@
  * @Author: root
  * @Date:   2021-10-20 14:50:07
  * @Last Modified by:   root
- * @Last Modified time: 2022-04-06 01:01:52
+ * @Last Modified time: 2022-05-04 10:50:23
  */
 
 require_once 'inc/bootstrap.php';
@@ -17,16 +17,19 @@ $auth->connectFromCookie($db);
 
 $errors = array();
 
+try { if(isset($auth->user()->token)): App::redirect('profile/'); endif; } catch (Exception $e) {}
 if(!empty($_POST) && !empty($_POST['pseudoMail']) && !empty($_POST['pass'])):
 	$validator->isEmail('pseudoMail', "Votre E-mail n'est pas valid !");
-if($validator->isValid()){
+if($validator->isValid()):
 	$session = Session::getInstance();
 	if($auth->login($db, strtolower($_POST['pseudoMail']), htmlspecialchars($_POST['pass']), isset($_POST['remember']))):
 		App::redirect('profile/');
 else:
 	$session->setFlash('danger', 'Identifiant ou mot de passe incorrecte');
 endif;
-}else{$errors = $validator->getErrors();}
+else: 
+	$errors = $validator->getErrors();
+endif;
 endif;
 
 ?>
@@ -74,7 +77,7 @@ endif;
 		</div>
 	</div>
 
-	<div class="text-right p-t-8 p-b-31">
+	<div class="text-center p-t-8 p-b-31">
 		<a href="register.php">I don't have an account.</a>
 	</div>
 

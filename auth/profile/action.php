@@ -4,7 +4,7 @@
  * @Author: B. Yacine
  * @Date:   2022-05-04 03:16:43
  * @Last Modified by:   root
- * @Last Modified time: 2022-05-04 03:57:37
+ * @Last Modified time: 2022-05-04 10:23:14
  */
 
 require_once "inc/bootstrap.php";
@@ -26,15 +26,23 @@ if(!empty($_GET) && !empty($_GET['page'])):
 	switch (htmlspecialchars($_GET['page'])) {
 		case 'vote':
 			try {
-				if (htmlspecialchars($_GET['answer']) == 'yes'):
-					$attributes = "rate_positive=?, token_user=?, token_challenge=?, token=?";
-					$value = [1, $auth->user()->token, htmlspecialchars($_GET['token']), Str::random(20)];
-					$req->addIndex($db, 'rating_challenges', $attributes, $value);
-				else:
-					$attributes = "rate_negative=?, token_user=?, token_challenge=?, token=?";
-					$value = [1, $auth->user()->token, htmlspecialchars($_GET['token']), Str::random(20)];
-					$req->addIndex($db, 'rating_challenges', $attributes, $value);
-				endif;	
+				if(!$req->isIndexHere($db, 'rating_challenges', 'token_user=? and token_challenge=?', [$auth->user()->token, htmlspecialchars($_GET['token'])])):
+
+					if (htmlspecialchars($_GET['answer']) == 'yes'):
+
+						$attributes = "rate_positive=?, token_user=?, token_challenge=?, token=?";
+						$value = [1, $auth->user()->token, htmlspecialchars($_GET['token']), Str::random(20)];
+						$req->addIndex($db, 'rating_challenges', $attributes, $value);
+
+					else:
+
+						$attributes = "rate_negative=?, token_user=?, token_challenge=?, token=?";
+						$value = [1, $auth->user()->token, htmlspecialchars($_GET['token']), Str::random(20)];
+						$req->addIndex($db, 'rating_challenges', $attributes, $value);
+
+					endif;
+
+				endif;
 			} catch (Exception $e) {
 				App::redirect('vote.php');				
 			}

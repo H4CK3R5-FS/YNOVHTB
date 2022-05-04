@@ -3,8 +3,8 @@
 /**
  * @Author: B. Yacine
  * @Date:   2022-05-04 03:16:43
- * @Last Modified by:   root
- * @Last Modified time: 2022-05-04 04:05:32
+ * @Last Modified by:   BOUFALA Yacine
+ * @Last Modified time: 2022-05-04 09:54:01
  */
 require_once "inc/bootstrap.php";
 
@@ -62,7 +62,7 @@ require_once 'inc/components/side_bar.php';
 												<a class="px-3 py-2" href="action.php?page=vote&token=<?= $challange->token; ?>&answer=yes">
 													<i class="fas fa-thumbs-up"></i>
 													<span class="text-white px-2">
-														<?= $req->getCount($db, 'rating_challenges', 'rate_positive=? and rate_negative IS NULL', [1]); ?>
+														<?= $req->getCount($db, 'rating_challenges', 'rate_positive=? and rate_negative IS NULL and token_challenge=?', [1, $challange->token]); ?>
 													</span>
 												</a>
 											</li>
@@ -70,7 +70,7 @@ require_once 'inc/components/side_bar.php';
 												<a class="px-3 py-2" href="action.php?page=vote&token=<?= $challange->token; ?>&answer=no">
 													<i class="fas fa-thumbs-down"></i>
 													<span class="text-white px-2">
-														<?= $req->getCount($db, 'rating_challenges', 'rate_negative=? and rate_positive IS NULL', [1]); ?>
+														<?= $req->getCount($db, 'rating_challenges', 'rate_negative=? and rate_positive IS NULL and token_challenge=?', [1, $challange->token]); ?>
 													</span>
 												</a>
 											</li>

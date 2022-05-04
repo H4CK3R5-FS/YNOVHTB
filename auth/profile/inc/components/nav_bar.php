@@ -3,8 +3,8 @@
 /**
  * @Author: yacine.B
  * @Date:   2022-03-31 20:42:11
- * @Last Modified by:   BOUFALA Yacine
- * @Last Modified time: 2022-05-03 19:20:35
+ * @Last Modified by:   root
+ * @Last Modified time: 2022-05-04 11:41:08
  */
 
 ?>
@@ -48,6 +48,17 @@
 						</div>
 					</form>
 				</div>
+				
+				<?php if(isset($active_forum) and $active_forum): ?>
+					
+
+
+					<!-- <button>+ </button> -->
+
+
+
+				<?php endif; ?>
+
 				<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
 					<li class="nav-item toggle-nav-search hidden-caret">
 						<a class="nav-link" data-toggle="collapse" href="#search-nav" role="button" aria-expanded="false" aria-controls="search-nav">

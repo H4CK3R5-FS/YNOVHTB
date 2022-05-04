@@ -4,7 +4,7 @@
  * @Author: Mockingbird
  * @Date:   2021-10-20 15:03:28
  * @Last Modified by:   root
- * @Last Modified time: 2022-05-04 05:13:38
+ * @Last Modified time: 2022-05-04 11:51:19
  */
 
 class Validator{
@@ -145,7 +145,6 @@ class Validator{
         return null;
     }
 
-    //  TO-DO !!!
     public function isChecked($field, $errorMsg){
         if(null != $this->getField($field) and $this->getField($field) === 'condition--OK'){
             return true;

@@ -4,7 +4,7 @@
  * @Author: Mockingbird
  * @Date:   2021-10-20 15:03:28
  * @Last Modified by:   root
- * @Last Modified time: 2022-05-04 04:46:25
+ * @Last Modified time: 2022-05-04 10:59:58
  */
 
 class Auth{
@@ -89,7 +89,7 @@ class Auth{
 			if(password_verify($password, $user->password)):
 				$this->connect($user);
 				if($remember): $this->remember($db, $user->id) ; endif;
-				return $user;
+				return true;
 			else:
 				return false;
 			endif;
@@ -115,11 +115,12 @@ class Auth{
 	}
 
 	public function resetPassword($db, $email){
-		$reset_token = Str::random(60);
-		$user = $db->query('SELECT * FROM users WHERE email = ? AND confirmation_at IS NOT NULL', [htmlspecialchars($email)])->fetch();
+		$reset_token = Str::random(250);
+		$user = $db->query('SELECT * FROM users WHERE email=? AND confirmation_at IS NOT NULL', [htmlspecialchars($email)])->fetch();
 		if($user):
-			$db->query('UPDATE users SET reset_token = ?, reset_at = NOW() WHERE id = ?', [$reset_token, $user->id]);
-			return $user;
+			$db->query('UPDATE users SET reset_token=?, reset_at=NOW() WHERE token=?', [$reset_token, $user->token]);
+			// Email::send_email()
+			return true;
 		endif;
 		return false;
 	}
