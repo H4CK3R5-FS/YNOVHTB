@@ -4,7 +4,7 @@
  * @Author: root
  * @Date:   2022-04-06 00:59:39
  * @Last Modified by:   root
- * @Last Modified time: 2022-05-04 03:47:12
+ * @Last Modified time: 2022-05-04 12:54:55
  */
 
 require_once "inc/bootstrap.php";
@@ -17,9 +17,9 @@ $db = App::getDatabase();
 $auth->connectFromCookie($db);
 
 if(!($auth->user())){
- $session = Session::getInstance();
- $session->setFlash('danger', 'Vous devez être connecter avant de continuer !');
- App::redirect('../index.php');
+  $session = Session::getInstance();
+  $session->setFlash('danger', 'Vous devez être connecter avant de continuer !');
+  App::redirect('../index.php');
 }
 
 $active_lessons = true;
@@ -27,10 +27,24 @@ require_once 'inc/components/header.php';
 require_once 'inc/components/nav_bar.php';
 require_once 'inc/components/side_bar.php';
 
-
 ?>
 
 <link rel="stylesheet" href="assets/css/cards-style.css"/>
+
+<style type="text/css">
+   .col-md-4:hover {
+      transform: scale(0.98);
+      box-shadow: 0 0 5px -2px rgba(0,0,0,0.3);
+      background-size:130%;
+      transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+   }
+   .col-md-4 > *,
+   .col-md-4:hover > *{
+      text-decoration: none;
+      color: #fff;
+   }
+</style>
+
 <div class="main-panel">
    <div class="content">
       <div class="page-inner">
@@ -41,7 +55,7 @@ require_once 'inc/components/side_bar.php';
          <div class="row">
             <div class="col-md-4">
                <div class="card p-3 mb-2">
-                 <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between">
                   <div class="d-flex flex-row align-items-center">
                      <h3 class="heading">complete Beginner <br>56 Hours - Easy</h3>
                   </div>
@@ -57,7 +71,7 @@ require_once 'inc/components/side_bar.php';
 
          <div class="col-md-4">
             <div class="card p-3 mb-2">
-              <div class="d-flex justify-content-between">
+             <div class="d-flex justify-content-between">
                <div class="d-flex flex-row align-items-center">
                   <h3 class="heading">Web Fundamentals <br>34 Hours - Easy</h3>
                </div>
@@ -73,7 +87,7 @@ require_once 'inc/components/side_bar.php';
 
       <div class="col-md-4">
          <div class="card p-3 mb-2">
-           <div class="d-flex justify-content-between">
+          <div class="d-flex justify-content-between">
             <div class="d-flex flex-row align-items-center">
                <h3 class="heading">>Penetration Tester <br>67 Hours - Medium</h3>
             </div>

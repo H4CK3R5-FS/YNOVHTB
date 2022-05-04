@@ -4,7 +4,7 @@
  * @Author: yacine.B
  * @Date:   2022-03-31 20:42:11
  * @Last Modified by:   root
- * @Last Modified time: 2022-05-04 11:41:08
+ * @Last Modified time: 2022-05-04 13:11:03
  */
 
 ?>
@@ -77,13 +77,13 @@
 								<div class="message-notif-scroll scrollbar-outer">
 									<div class="notif-center">
 										<a href="#">
-											<div class="notif-img"> 
-												<img src="assets/img/jm_denis.jpg" alt="Img Profile">
+											<div class="notif-img" style="width: 6em; height: 4em;"> 
+												<img src="assets/img/profile.jpg" alt="Img Profile">
 											</div>
 											<div class="notif-content">
 												<span class="subject">Jimmy Denis</span>
 												<span class="block">
-													How are you ?
+													Lorem ipsum dolor sit, amet consectetur adipisicing elit.
 												</span>
 												<span class="time">5 minutes ago</span> 
 											</div>
@@ -147,9 +147,7 @@
 								</li>
 								<li>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="profile.php">My Profile</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="profile.php">Setting</a>
+									<a class="dropdown-item" href="edit-profil.php">My Profile</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="../logout.php">Logout</a>
 								</li>

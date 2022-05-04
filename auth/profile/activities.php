@@ -4,7 +4,7 @@
  * @Author: root
  * @Date:   2022-04-06 00:59:39
  * @Last Modified by:   root
- * @Last Modified time: 2022-05-04 12:03:56
+ * @Last Modified time: 2022-05-04 15:04:44
  */
 
 require_once "inc/bootstrap.php";
@@ -61,12 +61,12 @@ require_once 'inc/components/side_bar.php';
                      <div class="card p-3 mb-2">
                        <div class="d-flex justify-content-between">
                         <div class="d-flex flex-row align-items-center">
-                           <h3 class="heading">Craking <br>Difficulty - Hard</h3>
+                           <h3 class="heading"><?= $challange->c_name; ?></h3>
                         </div>
                      </div>
                      <div class="mt-5">
                         <div class="progress">
-                           <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                           <div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
 
                      </div>

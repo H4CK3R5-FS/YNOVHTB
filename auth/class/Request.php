@@ -4,7 +4,7 @@
  * @Author: BOUFALA Yacine
  * @Date:   2022-05-03 18:40:13
  * @Last Modified by:   root
- * @Last Modified time: 2022-05-04 04:34:14
+ * @Last Modified time: 2022-05-04 12:10:35
  */
 
 
@@ -19,6 +19,7 @@ class Request {
 	public function getAllIndex($db, $table, $attributes='', $values, $getValue='*', $limit=''){
 		return $db->query("SELECT $getValue FROM $table ".((!empty($attributes))? "WHERE $attributes" : '')." $limit", $values)->fetchAll();
 	}
+
 
 	public function getAllIndexOrderBy($db, $getValue="*", $table, $Orderby="", $limit='limit 3'){
 		return $db->query("SELECT $getValue FROM $table $Orderby $limit", [])->fetchAll();
@@ -48,6 +49,7 @@ class Request {
 	public function getCount($db, $table, $field, $value){
 		return $db->query("SELECT count(id) as nb FROM $table WHERE $field", $value)->fetch()->nb;
 	}
+
 
 	public function getLevel($exp=0) {
 		return (25 + sqrt(625 + 100 * $exp)) / 50;

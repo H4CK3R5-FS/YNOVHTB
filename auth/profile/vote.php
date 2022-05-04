@@ -3,8 +3,8 @@
 /**
  * @Author: B. Yacine
  * @Date:   2022-05-04 03:16:43
- * @Last Modified by:   BOUFALA Yacine
- * @Last Modified time: 2022-05-04 09:54:01
+ * @Last Modified by:   root
+ * @Last Modified time: 2022-05-04 14:46:13
  */
 require_once "inc/bootstrap.php";
 
@@ -22,7 +22,7 @@ if(!($auth->user())){
 }
 
 $active_vote = true;
-$challanges = $req->getAllIndex($db, 'challenge', 'Status=? AND date_at > DATE_SUB(NOW(), INTERVAL 30 DAY) AND', ['pendding'], $getValue='*', $limit='3');
+$challanges = $req->getAllIndex($db, 'challenge', 'Status=? AND date_at > DATE_SUB(NOW(), INTERVAL 30 DAY) ', ['pendding'], $getValue='*', 'limit 3');
 
 require_once 'inc/components/header.php';
 require_once 'inc/components/nav_bar.php';

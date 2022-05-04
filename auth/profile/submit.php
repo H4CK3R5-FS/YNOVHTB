@@ -4,7 +4,7 @@
  * @Author: B. Yacine
  * @Date:   2022-05-04 03:16:43
  * @Last Modified by:   root
- * @Last Modified time: 2022-05-04 05:14:23
+ * @Last Modified time: 2022-05-04 12:52:45
  */
 
 
@@ -99,7 +99,7 @@ require_once 'inc/components/side_bar.php';
 							</div>
 						</div>
 						<!-- Modal -->
-						<div class="modal fade" style="background-color: #000;opacity: 0.8;" id="add-challengehallenge" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal fade" id="add-challengehallenge" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content" style="background-color: #1a2035; opacity: 0.8;">
 									<div class="modal-header">
@@ -201,7 +201,9 @@ require_once 'inc/components/side_bar.php';
 										<div class="flex-1 ml-3 pt-1">
 											<h6 class="text-uppercase fw-bold mb-1"><?= $hist->c_name; ?>
 											<?php if($hist->Status == 'Confirmed'): ?>
-												<span class="text-white float-right h2"><i class="fas fa-check-circle"></i></span>
+												<span class="text-white float-right h3">
+													<i class="fas fa-check-circle"></i>
+												</span>
 											<?php endif; ?>
 										</h6>
 									</div>

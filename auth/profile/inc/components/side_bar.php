@@ -4,7 +4,7 @@
  * @Author: yacine.B
  * @Date:   2022-03-31 20:46:37
  * @Last Modified by:   root
- * @Last Modified time: 2022-05-04 04:37:48
+ * @Last Modified time: 2022-05-04 13:11:34
  */
 
 	$level = floor($req->getLevel($req->getThis($db, 'user_progression', 'token_user=?', [$auth->user()->token])->exp));
@@ -37,13 +37,8 @@
 								</a>
 							</li>
 							<li>
-								<a href="edit-profile.php">
+								<a href="edit-profil.php">
 									<span class="link-collapse">Edit Profile</span>
-								</a>
-							</li>
-							<li>
-								<a href="settings.php">
-									<span class="link-collapse">Settings</span>
 								</a>
 							</li>
 						</ul>

@@ -4,7 +4,7 @@
  * @Author: Mockingbird
  * @Date:   2021-10-20 15:03:28
  * @Last Modified by:   root
- * @Last Modified time: 2022-05-04 11:51:19
+ * @Last Modified time: 2022-05-04 12:47:27
  */
 
 class Validator{
@@ -139,7 +139,7 @@ class Validator{
     public function moveFile($tmpName, $filename){
         $fileExtension = explode('.', $this->getField($filename))[1];
         $newName = "challenge-".uniqid();
-        if(move_uploaded_file($this->getField($tmpName), $this->getDirectory()."/".basename($newName.".".$fileExtension[1]))){
+        if(move_uploaded_file($this->getField($tmpName), $this->getDirectory()."/".basename($newName.".".$fileExtension))){
             return $this->getDirectory()."/".basename($newName.".".$fileExtension);
         }
         return null;

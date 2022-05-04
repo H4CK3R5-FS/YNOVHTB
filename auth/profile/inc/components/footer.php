@@ -3,8 +3,8 @@
 /**
  * @Author: Mockingbird
  * @Date:   2021-10-20 15:03:28
- * @Last Modified by:   yacine.B
- * @Last Modified time: 2022-03-31 22:05:36
+ * @Last Modified by:   root
+ * @Last Modified time: 2022-05-04 12:25:54
  */
 
 ?>
@@ -18,7 +18,7 @@
                         <ul class="nav">
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
-                                    Profile
+                                    Profil
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -29,7 +29,7 @@
                         </ul>
                     </nav>
                     <div class="copyright ml-auto">
-                        2022, BOUFALA Yacine
+                        2022, BOUFALA Yacine, LEICHNIG Coriane
                     </div>              
                 </div>
             </footer>
