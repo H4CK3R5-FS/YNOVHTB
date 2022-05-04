@@ -37,8 +37,7 @@ Circles.create({
 
 //Chart
 
-var ctx = document.getElementById('statisticsChart').getContext('2d');
-
+const ctx = document.getElementById('statisticsChart').getContext('2d');
 var statisticsChart = new Chart(ctx, {
 	type: 'line',
 	data: {

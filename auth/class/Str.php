@@ -4,7 +4,7 @@
  * @Author: Mockingbird
  * @Date:   2021-10-20 15:03:28
  * @Last Modified by:   root
- * @Last Modified time: 2021-10-20 15:30:32
+ * @Last Modified time: 2022-05-04 03:01:13
  */
 
 class Str{
@@ -18,5 +18,8 @@ class Str{
         $alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         return substr(str_shuffle(str_repeat($alphabet, $length)), 0, $length);
     }
-
+    static function random_color(){
+        $tab_color = ['red', 'blue', 'green'];
+        return $tab_color[array_rand($tab_color)];
+    }
 }

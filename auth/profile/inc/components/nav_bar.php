@@ -3,8 +3,8 @@
 /**
  * @Author: yacine.B
  * @Date:   2022-03-31 20:42:11
- * @Last Modified by:   root
- * @Last Modified time: 2022-04-06 01:11:08
+ * @Last Modified by:   BOUFALA Yacine
+ * @Last Modified time: 2022-05-03 19:20:35
  */
 
 ?>
@@ -138,7 +138,7 @@
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="profile.php">My Profile</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="profile.php">Account Setting</a>
+									<a class="dropdown-item" href="profile.php">Setting</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="../logout.php">Logout</a>
 								</li>

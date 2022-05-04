@@ -3,14 +3,15 @@
 /**
  * @Author: Mockingbird
  * @Date:   2021-10-20 15:03:28
- * @Last Modified by:   yacine.B
- * @Last Modified time: 2021-11-24 13:49:59
+ * @Last Modified by:   root
+ * @Last Modified time: 2022-05-04 05:13:38
  */
 
 class Validator{
 
     private $data;
     private $errors = [];
+    private $directory = "recent/challenges";
 
     public function __construct($data)
     {
@@ -116,6 +117,32 @@ class Validator{
             return false;
         }
         return true;
+    }
+
+    public function getDirectory(){
+        return $this->directory;
+    }
+
+    public function isErrorOk($field){
+        switch ($this->data) {
+            case UPLOAD_ERR_OK: break;
+            case UPLOAD_ERR_NO_FILE: 
+                $this->errors[$field] = 'No file sent !';break;
+            case UPLOAD_ERR_INI_SIZE:
+            case UPLOAD_ERR_FORM_SIZE: 
+                $this->errors[$field] = 'Exceeded filesize limit !';break;
+            default: 
+                return True;
+        }
+    }
+
+    public function moveFile($tmpName, $filename){
+        $fileExtension = explode('.', $this->getField($filename))[1];
+        $newName = "challenge-".uniqid();
+        if(move_uploaded_file($this->getField($tmpName), $this->getDirectory()."/".basename($newName.".".$fileExtension[1]))){
+            return $this->getDirectory()."/".basename($newName.".".$fileExtension);
+        }
+        return null;
     }
 
     //  TO-DO !!!

@@ -3,8 +3,8 @@
 /**
  * @Author: Mockingbird
  * @Date:   2021-10-20 15:03:28
- * @Last Modified by:   yacine.B
- * @Last Modified time: 2021-11-24 13:59:56
+ * @Last Modified by:   BOUFALA Yacine
+ * @Last Modified time: 2022-05-03 18:38:28
  */
 
     require_once "inc/bootstrap.php";
@@ -14,7 +14,7 @@
 
 	$validator = new Validator($_POST);
     $auth = App::getAuth();
-    $req = App::getAuthRequest();
+    $req = new Request();
     $db = App::getDatabase();
     $auth->connectFromCookie($db);
 

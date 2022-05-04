@@ -4,8 +4,10 @@
  * @Author: yacine.B
  * @Date:   2022-03-31 20:46:37
  * @Last Modified by:   root
- * @Last Modified time: 2022-04-06 01:53:39
+ * @Last Modified time: 2022-05-04 04:37:48
  */
+
+	$level = floor($req->getLevel($req->getThis($db, 'user_progression', 'token_user=?', [$auth->user()->token])->exp));
 
 ?>
 
@@ -21,7 +23,7 @@
 					<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 						<span>
 							<?= $auth->user()->pseudo; ?>
-							<span class="user-level">Level <?= $auth->getThis($db, 'user_progression', 'token_user=?', [$auth->user()->token])->level ?> </span>
+							<span class="user-level">Level: <?= $level; ?></span>
 							<span class="caret"></span>
 						</span>
 					</a>
@@ -67,6 +69,29 @@
 					<a href="activities.php" aria-expanded="false">
 						<i class="fas fa-clock"></i>
 						<p>Activities</p>
+					</a>
+				</li>
+
+				<?php if($level >= 10): ?>
+				<li class="nav-item <?= ($active_vote)? 'active': ''; ?>">
+					<a href="vote.php" aria-expanded="false">
+						<i class="fas fa-check-double"></i>
+						<p>Vote</p>
+					</a>
+				</li>
+				<?php endif; ?>
+
+				<li class="nav-item <?= ($active_forum)? 'active': ''; ?>">
+					<a href="forum.php" aria-expanded="false">
+						<i class="fas fa-comments"></i>
+						<p>Forum</p>
+					</a>
+				</li>
+
+				<li class="nav-item <?= ($active_submit)? 'active': ''; ?>">
+					<a href="submit.php" aria-expanded="false">
+						<i class="fas fa-download"></i>
+						<p>Submit</p>
 					</a>
 				</li>
 
