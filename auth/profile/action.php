@@ -4,7 +4,7 @@
  * @Author: B. Yacine
  * @Date:   2022-05-04 03:16:43
  * @Last Modified by:   root
- * @Last Modified time: 2022-05-04 15:00:47
+ * @Last Modified time: 2022-05-04 15:14:13
  */
 
 require_once "inc/bootstrap.php";
@@ -48,11 +48,13 @@ if(!empty($_GET) && !empty($_GET['page'])):
 			}
 			break;
 		case 'activities':
-			if(!$req->isIndexHere($db, 'user_challenge', 'token_user=? and token_challenge=?', [$auth->user()->token, htmlspecialchars($_GET['token'])])):
-				$req->addIndex($db, 'user_challenge', 'token_user=?, token_challenge=?, token=?, modifed_at=NOW()', 
-						[$auth->user()->token, htmlspecialchars($_GET['token']), Str::random(20)]
-				);
-			endif;
+			try {
+				if(!$req->isIndexHere($db, 'user_challenge', 'token_user=? and token_challenge=?', [$auth->user()->token, htmlspecialchars($_GET['token'])])):
+					$req->addIndex($db, 'user_challenge', 'token_user=?, token_challenge=?, token=?, modifed_at=NOW()', 
+							[$auth->user()->token, htmlspecialchars($_GET['token']), Str::random(20)]
+					);
+				endif;
+			} catch (Exception $e) {}
 			App::redirect($req->getThis($db, 'challenge', 'token=?', [htmlspecialchars($_GET['token'])], 'path')->path);
 			break;
 	}

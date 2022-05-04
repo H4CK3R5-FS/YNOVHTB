@@ -4,7 +4,7 @@
  * @Author: root
  * @Date:   2022-04-06 00:59:39
  * @Last Modified by:   root
- * @Last Modified time: 2022-05-04 15:04:44
+ * @Last Modified time: 2022-05-04 15:16:16
  */
 
 require_once "inc/bootstrap.php";
@@ -24,7 +24,7 @@ if(!($auth->user())){
 
 $active_act = true;
 
-$startedchallenges = $db->query('SELECT * FROM challenge WHERE token=(SELECT token_challenge FROM user_challenge WHERE token_user=?)', [$auth->user()->token])->fetchAll();
+$startedchallenges = $db->query('SELECT * FROM challenge WHERE token in (SELECT token_challenge FROM user_challenge WHERE token_user=?)', [$auth->user()->token])->fetchAll();
 $allchallenges = $req->getAllIndex($db, 'challenge', 'Status=?', ['Confirmed'], $getValue='*');
 
 require_once 'inc/components/header.php';
