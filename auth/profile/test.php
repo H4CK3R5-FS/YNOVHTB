@@ -4,7 +4,7 @@
  * @Author: root
  * @Date:   2022-05-04 05:03:39
  * @Last Modified by:   root
- * @Last Modified time: 2022-05-04 05:07:28
+ * @Last Modified time: 2022-05-04 15:33:29
  */
 
 require_once "inc/bootstrap.php";
@@ -32,23 +32,27 @@ if ($_POST):
 	var_dump(explode('.', $_FILES['c_file']['name']));
 endif;
 
+
+require_once 'inc/components/header.php';
+require_once 'inc/components/nav_bar.php';
+require_once 'inc/components/side_bar.php';
+
 ?>
 
+<div class="main-panel">
+	<div class="content">
+		<div class="page-inner">
 
 
-<form method="POST" enctype="multipart/form-data">
-	<div class="col-md-12">
-		<div class="form-group">
-			<div class="custom-file bg-dark">
-				<input type="file" class="custom-file-input" name="c_file" id="customFile" required>
-				<label class="custom-file-label" for="customFile">
-					<span class="text-muted">Your Challenge</span>
-				</label>
-			</div>
+
+
+			
+			
+
+
 		</div>
 	</div>
+</div>
 
-	<button type="submit" name="add-challenge" class="btn text-white py-2 px-4" style="background: #5867dd;">
-		<span class="h3 text-white">Save changes</span>
-	</button>
-</form>
+
+<?php require_once 'inc/components/footer.php'; ?>

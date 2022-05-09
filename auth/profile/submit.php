@@ -4,7 +4,7 @@
  * @Author: B. Yacine
  * @Date:   2022-05-04 03:16:43
  * @Last Modified by:   root
- * @Last Modified time: 2022-05-04 12:52:45
+ * @Last Modified time: 2022-05-04 16:12:37
  */
 
 
@@ -25,7 +25,6 @@ if(!($auth->user())){
 	$session->setFlash('danger', 'Vous devez être connecter avant de continuer !');
 	App::redirect('../index.php');
 }
-
 
 if ($_POST):
 
@@ -51,22 +50,21 @@ if ($_POST):
 
 	if ($validator->isValid() and $validator_file->isValid()):
 		$attributes = "c_name=?, c_flag=?, c_description=?, c_add_infos=?, exp=?, c_category=?, path=?, token=?, token_uploader=?, date_at=NOW()";
-	$value = [
-		htmlspecialchars(ucfirst(strtolower($_POST['c_name']))),
-		htmlspecialchars($_POST['c_flag']),
-		(htmlspecialchars($_POST['c_description']) == null)? null : htmlspecialchars($_POST['c_description']),
-		(htmlspecialchars($_POST['c_add_infos']) == null)? null : htmlspecialchars($_POST['c_add_infos']) == null,
-		100,
-		htmlspecialchars($_POST['c_category']),
-		$validator_file->moveFile('tmp_name', 'name'),
-		Str::random(20),
-		$auth->user()->token
-	];
-	$req->addIndex($db, 'challenge', $attributes, $value);
-
-else:
-	$errors = array_merge($validator->getErrors(), $validator_file->getErrors());
-endif;
+		$value = [
+			htmlspecialchars(ucfirst(strtolower($_POST['c_name']))),
+			htmlspecialchars($_POST['c_flag']),
+			(htmlspecialchars($_POST['c_description']) == null)? null : htmlspecialchars($_POST['c_description']),
+			(htmlspecialchars($_POST['c_add_infos']) == null)? null : htmlspecialchars($_POST['c_add_infos']) == null,
+			100,
+			htmlspecialchars($_POST['c_category']),
+			$validator_file->moveFile('tmp_name', 'name'),
+			Str::random(20),
+			$auth->user()->token
+		];
+		$req->addIndex($db, 'challenge', $attributes, $value);
+	else:
+		$errors = array_merge($validator->getErrors(), $validator_file->getErrors());
+	endif;
 endif;
 
 $active_submit = true;
@@ -194,7 +192,7 @@ require_once 'inc/components/side_bar.php';
 							</div>
 						</div>
 
-						<div class="card-body" style="height: 300px;">
+						<div class="card-body">
 							<?php if($history != null): ?>
 								<?php foreach($history as $hist): ?>
 									<div class="d-flex">
@@ -226,7 +224,7 @@ require_once 'inc/components/side_bar.php';
 						</div>
 					</div>
 
-					<div class="card-body" style="height: 300px;">
+					<div class="card-body">
 						<?php if($adopted_challenges != null): ?>
 							<?php foreach($adopted_challenges as $checked): ?>
 								<div class="d-flex">

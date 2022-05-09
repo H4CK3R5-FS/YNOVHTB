@@ -4,7 +4,7 @@
  * @Author: yacine.B
  * @Date:   2022-03-31 20:42:11
  * @Last Modified by:   root
- * @Last Modified time: 2022-05-04 13:11:03
+ * @Last Modified time: 2022-05-04 15:37:03
  */
 
 ?>
@@ -48,16 +48,6 @@
 						</div>
 					</form>
 				</div>
-				
-				<?php if(isset($active_forum) and $active_forum): ?>
-					
-
-
-					<!-- <button>+ </button> -->
-
-
-
-				<?php endif; ?>
 
 				<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
 					<li class="nav-item toggle-nav-search hidden-caret">

@@ -4,7 +4,7 @@
  * @Author: B. Yacine
  * @Date:   2022-05-04 03:16:43
  * @Last Modified by:   root
- * @Last Modified time: 2022-05-04 14:46:13
+ * @Last Modified time: 2022-05-04 16:13:13
  */
 require_once "inc/bootstrap.php";
 
@@ -43,9 +43,6 @@ require_once 'inc/components/side_bar.php';
 						<?php if($challanges != null): ?>
 							<?php foreach($challanges as $challange): ?>
 								<article class="postcard dark <?= Str::random_color(); ?>">
-									<a class="postcard__img_link" href="#">
-										<img class="postcard__img" src="https://picsum.photos/1000/1000" alt="Image Title" />
-									</a>
 									<div class="postcard__text">
 										<?php 
 										$uploader = $req->getThis($db, 'users', 'token=?', [htmlspecialchars($challange->token_uploader)], $getValue="pseudo")->pseudo;
